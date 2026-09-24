@@ -1,110 +1,531 @@
-(function(){let e=document.createElement(`link`).relList;if(e&&e.supports&&e.supports(`modulepreload`))return;for(let e of document.querySelectorAll(`link[rel="modulepreload"]`))n(e);new MutationObserver(e=>{for(let t of e)if(t.type===`childList`)for(let e of t.addedNodes)e.tagName===`LINK`&&e.rel===`modulepreload`&&n(e)}).observe(document,{childList:!0,subtree:!0});function t(e){let t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),t.credentials=e.crossOrigin===`use-credentials`?`include`:e.crossOrigin===`anonymous`?`omit`:`same-origin`,t}function n(e){if(e.ep)return;e.ep=!0;let n=t(e);fetch(e.href,n)}})();var e=[{id:`transferring`,name:`Grain Transferring`,icon:`move-horizontal`,img:`assets/products/pipe-coil-1.jpeg`},{id:`collecting`,name:`Grain Collecting`,icon:`circle-dot`,img:`assets/products/collector-field.jpeg`},{id:`bagging`,name:`Grain Bagging`,icon:`package`,img:`assets/products/collector-bags.jpeg`},{id:`handling`,name:`Grain Handling Equipment`,icon:`warehouse`,img:`assets/products/pipe-frame.jpeg`},{id:`machinery`,name:`Agricultural Machinery`,icon:`tractor`,img:`assets/products/collector-diagram.jpeg`},{id:`accessories`,name:`Pipes & Accessories`,icon:`cable`,img:`assets/products/pipe-mounted-2.jpeg`}],t=[{icon:`gauge`,value:`18 Tons/Hour`,label:`High Transfer Capacity`},{icon:`ruler`,value:`30–500 Feet`,label:`Pipe Length Options`},{icon:`move-vertical`,value:`20 Feet`,label:`Transfer Height`},{icon:`zap`,value:`5 HP–16 HP`,label:`Motor Options`},{icon:`package-check`,value:`90 Bags/Hour`,label:`Bagging Capacity`}],n={name:`Farm Craft`,gstin:`37AQXPV3001H1ZG`,logo:`assets/farmcraft-logo-full.png`,logoMark:`assets/farmcraft-logo-full.png`,email:`admin@farmcraft.com`,phone:`+91 94404 36868`,whatsapp:`919000000000`,address:`1-23A, Swaraj Tractor Showroom, Palakonda, Manyam District, Andhra Pradesh - 532440strial Road, Andhra Pradesh, India`,addressNote:``,website:``,mobileNumbers:[],whatsappNumbers:[]},r=[{id:`grain-transferring`,title:`Grain Transferring Solutions`,icon:`move-horizontal`,image:`assets/products/pipe-mounted-1.jpeg`,tagline:`Move grain fast, over long distances, with far less manual handling.`,description:`We supply and support flexible, motor-driven grain transferring systems that move rice, wheat, corn, soybean and powders between trucks, stores and processing points — sized to fit daily farm and mill use.`,benefits:[`Transfer capacity up to 18 tons/hour`,`Pipe lengths from 30 ft to 500 ft`,`Motor options from 5 HP to 16 HP`,`Cuts down manual loading and labour time`],process:[`Share your site layout and daily grain volume with our team`,`We recommend a pipe length and motor configuration`,`Get a purchase code and confirm delivery details`,`On-site setup guidance provided on request`],categoryId:`transferring`},{id:`grain-collecting`,title:`Grain Collecting & Field Recovery`,icon:`circle-dot`,image:`assets/products/collector-field.jpeg`,tagline:`Recover loose grain from threshing floors and open yards efficiently.`,description:`Track-mounted and wheeled collectors gather loose grain from the ground and feed it into an inclined elevator, cutting manual scooping and speeding up cleanup after threshing.`,benefits:[`Handles rice, corn, wheat, soybean and side crops`,`Adjustable-incline elevator`,`Stable movement across loose grain heaps`,`Faster yard and threshing-floor cleanup after harvest`],process:[`Tell us your terrain and typical heap size`,`We match a collector unit to your operation`,`Purchase code and delivery are arranged`,`Live demonstration available on request`],categoryId:`collecting`},{id:`grain-bagging`,title:`Grain Bagging & Packaging`,icon:`package`,image:`assets/products/collector-bags.jpeg`,tagline:`Consistent, fast bag-filling for grains and powders.`,description:`Bagging attachments and collecting-and-bagging machines pair with your existing setup for consistent fill weight and quick bag changeovers, so filled bags are ready to stack and move.`,benefits:[`Up to 90 bags/hour`,`Standard 50 kg woven bag compatibility`,`Consistent fill weight across bags`,`Pairs with any Farm Craft collector unit`],process:[`Confirm your bag size and target throughput`,`We recommend the right bagging attachment`,`Get a purchase code and delivery schedule`,`Optional on-site setup walkthrough`],categoryId:`bagging`},{id:`custom-configuration`,title:`Custom Machinery Configuration`,icon:`settings-2`,image:`assets/products/collector-diagram.jpeg`,tagline:`Motor, pipe and mounting options matched to your operation, not the other way around.`,description:`Every farm, mill and store is different. We help you choose motor output, pipe length, mounting style and accessories so the machinery fits your daily volume and available space.`,benefits:[`Configurations from 5 HP to 16 HP motors`,`Fixed, wheeled or track-mounted builds`,`Sized to your grain type and daily volume`,`One point of contact for the full setup`],process:[`Describe your operation — grain type, volume, space`,`We propose one or two configurations to compare`,`Choose a configuration inside the Get a Code flow`,`Confirm your order and track it under My Orders`],categoryId:`machinery`},{id:`installation-support`,title:`On-Site Installation & Setup Guidance`,icon:`wrench`,image:`assets/products/pipe-frame.jpeg`,tagline:`Get your machinery running correctly from day one.`,description:`Once your order is confirmed, our team can walk you through safe setup, pipe routing and first-run checks so your machine is working correctly from the very start.`,benefits:[`Guided first-time setup`,`Safety and operating checks`,`Pipe routing and mounting guidance`,`Fewer early breakdowns caused by incorrect setup`],process:[`Confirm delivery and your preferred setup date`,`Our team shares a simple setup checklist`,`Guided walkthrough, in person or by phone`,`Sign-off once the machine is running smoothly`],categoryId:`handling`},{id:`after-sales-support`,title:`After-Sales Support & Maintenance`,icon:`headphones`,image:`assets/products/pipe-coil-2.jpeg`,tagline:`We stay reachable after the sale, not just before it.`,description:`From spare pipe sections to troubleshooting help, our team supports Farm Craft machinery for the long run — reach out any time using your order ID or purchase code.`,benefits:[`Spare parts and pipe sections available`,`Troubleshooting support by phone or WhatsApp`,`Guidance on routine maintenance`,`Support tied directly to your order and purchase code`],process:[`Reach out with your purchase code or order ID`,`Describe the issue or the part you need`,`Our team advises the next steps`,`We follow up with you until it is resolved`],categoryId:`accessories`}],i=`https://farmcarft-5.onrender.com/api`.replace(/\/$/,``),a={auth:`fc_auth_session`,token:`fc_auth_token`,wishlist:`fc_wishlist`,addresses:`fc_addresses`};function o(e,t){try{let n=localStorage.getItem(e);return n?JSON.parse(n):t}catch{return t}}function s(e,t){localStorage.setItem(e,JSON.stringify(t))}async function c(e,t={}){let n=localStorage.getItem(a.token),r={"Content-Type":`application/json`,...t.headers||{}};n&&(r.Authorization=`Bearer ${n}`);let o;try{o=await fetch(`${i}${e}`,{...t,headers:r})}catch{throw Error(`Could not reach the Farm Craft server. Start the backend at http://127.0.0.1:8000 and try again.`)}if(o.status===204)return null;let s=null;try{s=await o.json()}catch{}if(!o.ok){o.status===401&&(localStorage.removeItem(a.token),localStorage.removeItem(a.auth));let e=typeof s?.detail==`string`&&s.detail?s.detail:{400:`That request was not valid. Please check the details and try again.`,401:`Please log in to continue.`,403:`You do not have permission to do that.`,404:`We could not find what you were looking for.`,409:`That could not be completed due to a conflict with existing data.`,422:`Please check the details you entered and try again.`}[o.status]||`Something went wrong on the Farm Craft server. Please try again.`,t=Error(e);throw t.status=o.status,t}return s}function l(e){s(a.auth,e.user),localStorage.setItem(a.token,e.access_token)}var u={async loginCustomer(e,t){try{let n=await c(`/auth/customer/login`,{method:`POST`,body:JSON.stringify({name:e,mobile:t})});return l(n),{ok:!0,session:n.user}}catch(e){return{ok:!1,error:e.message}}},async sendOtp(e){return await c(`/auth/customer/send-otp`,{method:`POST`,body:JSON.stringify({mobile:e})}),{ok:!0}},async verifyOtp(e,t,n){try{let r=await c(`/auth/customer/verify-otp`,{method:`POST`,body:JSON.stringify({name:e,mobile:t,otp:n})});return l(r),{ok:!0,session:r.user}}catch(e){return{ok:!1,error:e.message}}},logout(){localStorage.removeItem(a.token),localStorage.removeItem(a.auth)},getSession(){return o(a.auth,null)},isLoggedIn(){return!!localStorage.getItem(a.token)&&!!o(a.auth,null)}};function d(e){let t=(e.images&&e.images.length?e.images:[e.image]).filter(Boolean),n=[];for(let[t,r]of[[`Motor`,`motor`],[`Capacity`,`capacity`],[`Length`,`length`],[`Height`,`height`],[`Pipe Material`,`pipe_material`],[`Screw Material`,`screw_material`],[`Usage`,`usage`]])e[r]&&n.push({label:t,value:e[r]});n.length||n.push({label:`SKU`,value:e.sku});let r=e.slug||e.name.toLowerCase().trim().replace(/[^a-z0-9]+/g,`-`).replace(/^-|-$/g,``),i=e.price==null?null:Number(e.price),a=e.discount_price==null?void 0:Number(e.discount_price),o=a??i,s=i!=null&&a!=null&&a<i,c=e.stock<=0?`Out of Stock`:e.stock<=5?`Low Stock`:`In Stock`;return{...e,slug:r,price:o,listPrice:i,discountPrice:a,hasDiscount:s,images:t.length?t:[`assets/products/collector-diagram.jpeg`],specifications:n,features:e.features||[],applications:e.applications||[],stockStatus:c,rating:null,reviews:0}}var f={cache:[],loading:!1,loaded:!1,loadingPromise:null,error:null,async load({force:e=!1}={}){return this.loaded&&!e?this.cache:this.loadingPromise&&!e?this.loadingPromise:(this.loading=!0,this.loadingPromise=(async()=>{try{let e=await c(`/products?status=active&skip=0&limit=200`),t=e.items||[],n=e.total??t.length;for(;t.length<n;){let e=await c(`/products?status=active&skip=${t.length}&limit=200`);if(!e.items||!e.items.length)break;t=t.concat(e.items)}this.cache=t.map(d),this.error=null,this.loaded=!0}catch(e){this.error=e.message||`Could not load products.`}finally{this.loading=!1,this.loadingPromise=null}return this.cache})(),this.loadingPromise)},list(){return this.cache},search(e,{category:t,availability:n}={}){let r=(e||``).trim().toLowerCase(),i=e=>String(e||``).trim().toLowerCase().replace(/&/g,`and`).replace(/[^a-z0-9]+/g,`-`).replace(/^-|-$/g,``);return this.cache.filter(e=>{if(t){let n=i(t),r=i(e.category),a={transferring:[`transferring`,`grain-transferring`,`grain-transfer`,`grain-transferring-equipment`],collecting:[`collecting`,`grain-collecting`,`grain-collection`],bagging:[`bagging`,`grain-bagging`,`grain-bagging-packaging`],handling:[`handling`,`grain-handling`,`grain-handling-equipment`],machinery:[`machinery`,`agricultural-machinery`],accessories:[`accessories`,`pipes-accessories`,`pipes-and-accessories`]}[n]||[n];if(!a.includes(r)&&!a.some(e=>r.includes(e)||e.includes(r)))return!1}return n===`in-stock`&&e.stockStatus!==`In Stock`||n===`low-stock`&&e.stockStatus!==`Low Stock`?!1:!r||[e.name,e.description,e.category,e.sku,...e.applications,...e.features].join(` `).toLowerCase().includes(r)})},bySlug(e){return this.cache.find(t=>t.slug===e)||null}},p={getProfile(){let e=u.getSession();return e?{...e,addresses:o(a.addresses,[])}:null},saveAddress(e){let t=o(a.addresses,[]);return t.unshift({id:`addr_`+Date.now(),...e}),s(a.addresses,t),t},getAddresses(){return o(a.addresses,[])},toggleWishlist(e){let t=o(a.wishlist,[]),n=t.indexOf(e);return n>=0?t.splice(n,1):t.unshift(e),s(a.wishlist,t),t},getWishlist(){return o(a.wishlist,[])}},m={async get(){return c(`/cart`)},async add(e,t=1){return c(`/cart/items`,{method:`POST`,body:JSON.stringify({product_id:e,quantity:t})})},async update(e,t){return c(`/cart/items/${e}`,{method:`PUT`,body:JSON.stringify({quantity:t})})},async remove(e){return c(`/cart/items/${e}`,{method:`DELETE`})},async clear(){return c(`/cart`,{method:`DELETE`})}},h={cache:[],async create(e){let t=await c(`/orders`,{method:`POST`,body:JSON.stringify({address:e.address,mobile:e.customer?.mobile||null,configuration:e.configuration||null,order_method:e.orderMethod||`delivery`})});return this.cache.unshift(t),t},async load(){return this.cache=await c(`/orders`),this.cache},list(){return this.cache},byId(e){return this.cache.find(t=>t.id===e||t.order_number===e||t.orderId===e)||null}},ee=`data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%220%200%2064%2064%22%3E%0A%20%20%20%20%20%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%231E7A3D%22%2F%3E%0A%20%20%20%20%20%3Cpath%20d%3D%22M32%2014%20C20%2014%2014%2024%2014%2034%20C14%2044%2022%2050%2032%2050%20C42%2050%2050%2044%2050%2034%20C50%2024%2044%2014%2032%2014%20Z%22%0A%20%20%20%20%20%20%20%20%20%20%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.4%22%2F%3E%0A%20%20%20%20%20%3Cpath%20d%3D%22M32%2020%20V44%20M32%2044%20L24%2036%20M32%2038%20L40%2030%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.2%22%20stroke-linecap%3D%22round%22%2F%3E%0A%20%20%20%3C%2Fsvg%3E`,g=null;function _(){return g||(g=fetch(n.logoMark).then(e=>{if(!e.ok)throw Error(`logo fetch failed`);return e.blob()}).then(e=>new Promise((t,n)=>{let r=new FileReader;r.onload=()=>t(r.result),r.onerror=n,r.readAsDataURL(e)})).catch(()=>ee),g)}function v(e){return`INV-${e.order_number||e.id}`}var te={async buildInvoiceHtml(e){let t=await _(),r=new Date(e.created_at);return`
-    <div style="font-family: 'Inter', Arial, sans-serif; color:#2A2E29; max-width:720px; margin:0 auto; background:#FCFBF8;">
+(function(){let e=document.createElement(`link`).relList;if(e&&e.supports&&e.supports(`modulepreload`))return;for(let e of document.querySelectorAll(`link[rel="modulepreload"]`))n(e);new MutationObserver(e=>{for(let t of e)if(t.type===`childList`)for(let e of t.addedNodes)e.tagName===`LINK`&&e.rel===`modulepreload`&&n(e)}).observe(document,{childList:!0,subtree:!0});function t(e){let t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),t.credentials=e.crossOrigin===`use-credentials`?`include`:e.crossOrigin===`anonymous`?`omit`:`same-origin`,t}function n(e){if(e.ep)return;e.ep=!0;let n=t(e);fetch(e.href,n)}})();var e=[{id:`transferring`,name:`Grain Transferring`,icon:`move-horizontal`,img:`assets/products/pipe-coil-1.jpeg`},{id:`collecting`,name:`Grain Collecting`,icon:`circle-dot`,img:`assets/products/collector-field.jpeg`},{id:`bagging`,name:`Grain Bagging`,icon:`package`,img:`assets/products/collector-bags.jpeg`},{id:`handling`,name:`Grain Handling Equipment`,icon:`warehouse`,img:`assets/products/pipe-frame.jpeg`},{id:`machinery`,name:`Agricultural Machinery`,icon:`tractor`,img:`assets/products/collector-diagram.jpeg`},{id:`accessories`,name:`Pipes & Accessories`,icon:`cable`,img:`assets/products/pipe-mounted-2.jpeg`}],t=[{icon:`gauge`,value:`18 Tons/Hour`,label:`High Transfer Capacity`},{icon:`ruler`,value:`30–500 Feet`,label:`Pipe Length Options`},{icon:`move-vertical`,value:`20 Feet`,label:`Transfer Height`},{icon:`zap`,value:`5 HP–16 HP`,label:`Motor Options`},{icon:`package-check`,value:`90 Bags/Hour`,label:`Bagging Capacity`}],n={name:`Farm Craft`,gstin:`37AQXPV3001H1ZG`,logo:`assets/farmcraft-logo-full.png`,logoMark:`assets/farmcraft-logo-full.png`,email:`admin@farmcraft.com`,phone:`+91 94404 36868`,whatsapp:`919000000000`,address:`1-23A, Swaraj Tractor Showroom, Palakonda, Manyam District, Andhra Pradesh - 532440strial Road, Andhra Pradesh, India`,addressNote:``,website:``,mobileNumbers:[],whatsappNumbers:[]},r=[{id:`grain-transferring`,title:`Grain Transferring Solutions`,icon:`move-horizontal`,image:`assets/products/pipe-mounted-1.jpeg`,tagline:`Move grain fast, over long distances, with far less manual handling.`,description:`We supply and support flexible, motor-driven grain transferring systems that move rice, wheat, corn, soybean and powders between trucks, stores and processing points — sized to fit daily farm and mill use.`,benefits:[`Transfer capacity up to 18 tons/hour`,`Pipe lengths from 30 ft to 500 ft`,`Motor options from 5 HP to 16 HP`,`Cuts down manual loading and labour time`],process:[`Share your site layout and daily grain volume with our team`,`We recommend a pipe length and motor configuration`,`Get a purchase code and confirm delivery details`,`On-site setup guidance provided on request`],categoryId:`transferring`},{id:`grain-collecting`,title:`Grain Collecting & Field Recovery`,icon:`circle-dot`,image:`assets/products/collector-field.jpeg`,tagline:`Recover loose grain from threshing floors and open yards efficiently.`,description:`Track-mounted and wheeled collectors gather loose grain from the ground and feed it into an inclined elevator, cutting manual scooping and speeding up cleanup after threshing.`,benefits:[`Handles rice, corn, wheat, soybean and side crops`,`Adjustable-incline elevator`,`Stable movement across loose grain heaps`,`Faster yard and threshing-floor cleanup after harvest`],process:[`Tell us your terrain and typical heap size`,`We match a collector unit to your operation`,`Purchase code and delivery are arranged`,`Live demonstration available on request`],categoryId:`collecting`},{id:`grain-bagging`,title:`Grain Bagging & Packaging`,icon:`package`,image:`assets/products/collector-bags.jpeg`,tagline:`Consistent, fast bag-filling for grains and powders.`,description:`Bagging attachments and collecting-and-bagging machines pair with your existing setup for consistent fill weight and quick bag changeovers, so filled bags are ready to stack and move.`,benefits:[`Up to 90 bags/hour`,`Standard 50 kg woven bag compatibility`,`Consistent fill weight across bags`,`Pairs with any Farm Craft collector unit`],process:[`Confirm your bag size and target throughput`,`We recommend the right bagging attachment`,`Get a purchase code and delivery schedule`,`Optional on-site setup walkthrough`],categoryId:`bagging`},{id:`custom-configuration`,title:`Custom Machinery Configuration`,icon:`settings-2`,image:`assets/products/collector-diagram.jpeg`,tagline:`Motor, pipe and mounting options matched to your operation, not the other way around.`,description:`Every farm, mill and store is different. We help you choose motor output, pipe length, mounting style and accessories so the machinery fits your daily volume and available space.`,benefits:[`Configurations from 5 HP to 16 HP motors`,`Fixed, wheeled or track-mounted builds`,`Sized to your grain type and daily volume`,`One point of contact for the full setup`],process:[`Describe your operation — grain type, volume, space`,`We propose one or two configurations to compare`,`Choose a configuration inside the Get a Code flow`,`Confirm your order and track it under My Orders`],categoryId:`machinery`},{id:`installation-support`,title:`On-Site Installation & Setup Guidance`,icon:`wrench`,image:`assets/products/pipe-frame.jpeg`,tagline:`Get your machinery running correctly from day one.`,description:`Once your order is confirmed, our team can walk you through safe setup, pipe routing and first-run checks so your machine is working correctly from the very start.`,benefits:[`Guided first-time setup`,`Safety and operating checks`,`Pipe routing and mounting guidance`,`Fewer early breakdowns caused by incorrect setup`],process:[`Confirm delivery and your preferred setup date`,`Our team shares a simple setup checklist`,`Guided walkthrough, in person or by phone`,`Sign-off once the machine is running smoothly`],categoryId:`handling`},{id:`after-sales-support`,title:`After-Sales Support & Maintenance`,icon:`headphones`,image:`assets/products/pipe-coil-2.jpeg`,tagline:`We stay reachable after the sale, not just before it.`,description:`From spare pipe sections to troubleshooting help, our team supports Farm Craft machinery for the long run — reach out any time using your order ID or purchase code.`,benefits:[`Spare parts and pipe sections available`,`Troubleshooting support by phone or WhatsApp`,`Guidance on routine maintenance`,`Support tied directly to your order and purchase code`],process:[`Reach out with your purchase code or order ID`,`Describe the issue or the part you need`,`Our team advises the next steps`,`We follow up with you until it is resolved`],categoryId:`accessories`}],i=`https://fcframcraft.onrender.com`.replace(/\/+$/,``),a=`/api`,o={auth:`fc_auth_session`,token:`fc_auth_token`,wishlist:`fc_wishlist`,addresses:`fc_addresses`};function s(e,t){try{let n=localStorage.getItem(e);return n?JSON.parse(n):t}catch{return t}}function c(e,t){localStorage.setItem(e,JSON.stringify(t))}function l(e=``){let t=String(e||``).trim();return t===`/api`?`/api`:t.startsWith(`/api/`)?t:!t||t===`/`?a:`${a}${t.startsWith(`/`)?t:`/${t}`}`}async function u(e,t={}){let n=localStorage.getItem(o.token),r={"Content-Type":`application/json`,...t.headers||{}};n&&(r.Authorization=`Bearer ${n}`);let a=`${i}${l(e)}`,s;try{s=await fetch(a,{...t,headers:r})}catch{throw Error(`Could not reach the Farm Craft server. Please check the backend connection and try again.`)}if(s.status===204)return null;let c=null;try{c=await s.json()}catch{c=null}if(!s.ok){s.status===401&&(localStorage.removeItem(o.token),localStorage.removeItem(o.auth));let e=typeof c?.detail==`string`&&c.detail?c.detail:{400:`That request was not valid. Please check the details and try again.`,401:`Please log in to continue.`,403:`You do not have permission to do that.`,404:`We could not find what you were looking for.`,409:`That could not be completed due to a conflict with existing data.`,422:`Please check the details you entered and try again.`}[s.status]||`Something went wrong on the Farm Craft server. Please try again.`,t=Error(e);throw t.status=s.status,t}return c}function d(e){if(!e)throw Error(`Invalid authentication response from the server.`);if(!e.access_token)throw Error(`Login succeeded but no access token was returned.`);if(!e.user)throw Error(`Login succeeded but no customer details were returned.`);c(o.auth,e.user),localStorage.setItem(o.token,e.access_token)}var f={async loginCustomer(e,t){try{let n=String(e||``).trim(),r=String(t||``).trim();if(!n)return{ok:!1,error:`Please enter your full name.`};if(!r)return{ok:!1,error:`Please enter your mobile number.`};let i=await u(`/auth/customer/login`,{method:`POST`,body:JSON.stringify({name:n,mobile:r})});return d(i),{ok:!0,session:i.user}}catch(e){return{ok:!1,error:e?.message||`Customer login failed. Please try again.`}}},async sendOtp(e){try{let t=String(e||``).trim();return t?(await u(`/auth/customer/send-otp`,{method:`POST`,body:JSON.stringify({mobile:t})}),{ok:!0}):{ok:!1,error:`Please enter your mobile number.`}}catch(e){return{ok:!1,error:e?.message||`Could not send OTP. Please try again.`}}},async verifyOtp(e,t,n){try{let r=String(e||``).trim(),i=String(t||``).trim(),a=String(n||``).trim();if(!r)return{ok:!1,error:`Please enter your full name.`};if(!i)return{ok:!1,error:`Please enter your mobile number.`};if(!a)return{ok:!1,error:`Please enter the OTP.`};let o=await u(`/auth/customer/verify-otp`,{method:`POST`,body:JSON.stringify({name:r,mobile:i,otp:a})});return d(o),{ok:!0,session:o.user}}catch(e){return{ok:!1,error:e?.message||`OTP verification failed. Please try again.`}}},logout(){localStorage.removeItem(o.token),localStorage.removeItem(o.auth)},getSession(){return s(o.auth,null)},isLoggedIn(){return!!localStorage.getItem(o.token)&&!!s(o.auth,null)}};function p(e){let t=(e.images&&e.images.length?e.images:[e.image]).filter(Boolean),n=[];for(let[t,r]of[[`Motor`,`motor`],[`Capacity`,`capacity`],[`Length`,`length`],[`Height`,`height`],[`Pipe Material`,`pipe_material`],[`Screw Material`,`screw_material`],[`Usage`,`usage`]])e[r]&&n.push({label:t,value:e[r]});!n.length&&e.sku&&n.push({label:`SKU`,value:e.sku});let r=e.slug||String(e.name||``).toLowerCase().trim().replace(/[^a-z0-9]+/g,`-`).replace(/^-|-$/g,``),i=e.price==null?null:Number(e.price),a=e.discount_price==null?void 0:Number(e.discount_price),o=a??i,s=i!=null&&a!=null&&a<i,c=Number(e.stock??0),l=c<=0?`Out of Stock`:c<=5?`Low Stock`:`In Stock`;return{...e,slug:r,price:o,listPrice:i,discountPrice:a,hasDiscount:s,images:t.length?t:[`assets/products/collector-diagram.jpeg`],specifications:n,features:e.features||[],applications:e.applications||[],stockStatus:l,rating:null,reviews:0}}var m={cache:[],loading:!1,loaded:!1,loadingPromise:null,error:null,async load({force:e=!1}={}){return this.loaded&&!e?this.cache:this.loadingPromise&&!e?this.loadingPromise:(this.loading=!0,this.loadingPromise=(async()=>{try{let e=await u(`/products?status=active&skip=0&limit=200`),t=e?.items||[],n=e?.total??t.length;for(;t.length<n;){let e=await u(`/products?status=active&skip=${t.length}&limit=200`);if(!e?.items||!e.items.length)break;t=t.concat(e.items)}this.cache=t.map(p),this.error=null,this.loaded=!0}catch(e){this.error=e?.message||`Could not load products.`}finally{this.loading=!1,this.loadingPromise=null}return this.cache})(),this.loadingPromise)},list(){return this.cache},search(e,{category:t,availability:n}={}){let r=String(e||``).trim().toLowerCase(),i=e=>String(e||``).trim().toLowerCase().replace(/&/g,`and`).replace(/[^a-z0-9]+/g,`-`).replace(/^-|-$/g,``);return this.cache.filter(e=>{if(t){let n=i(t),r=i(e.category),a={transferring:[`transferring`,`grain-transferring`,`grain-transfer`,`grain-transferring-equipment`],collecting:[`collecting`,`grain-collecting`,`grain-collection`],bagging:[`bagging`,`grain-bagging`,`grain-bagging-packaging`],handling:[`handling`,`grain-handling`,`grain-handling-equipment`],machinery:[`machinery`,`agricultural-machinery`],accessories:[`accessories`,`pipes-accessories`,`pipes-and-accessories`]}[n]||[n];if(!a.includes(r)&&!a.some(e=>r.includes(e)||e.includes(r)))return!1}return n===`in-stock`&&e.stockStatus!==`In Stock`||n===`low-stock`&&e.stockStatus!==`Low Stock`?!1:!r||[e.name,e.description,e.category,e.sku,...e.applications||[],...e.features||[]].join(` `).toLowerCase().includes(r)})},bySlug(e){return this.cache.find(t=>t.slug===e)||null}},h={getProfile(){let e=f.getSession();return e?{...e,addresses:s(o.addresses,[])}:null},saveAddress(e){let t=s(o.addresses,[]);return t.unshift({id:`addr_${Date.now()}`,...e}),c(o.addresses,t),t},getAddresses(){return s(o.addresses,[])},toggleWishlist(e){let t=s(o.wishlist,[]),n=t.indexOf(e);return n>=0?t.splice(n,1):t.unshift(e),c(o.wishlist,t),t},getWishlist(){return s(o.wishlist,[])}},g={async get(){return u(`/cart`)},async add(e,t=1){return u(`/cart/items`,{method:`POST`,body:JSON.stringify({product_id:e,quantity:t})})},async update(e,t){return u(`/cart/items/${e}`,{method:`PUT`,body:JSON.stringify({quantity:t})})},async remove(e){return u(`/cart/items/${e}`,{method:`DELETE`})},async clear(){return u(`/cart`,{method:`DELETE`})}},_={cache:[],async create(e){let t=await u(`/orders`,{method:`POST`,body:JSON.stringify({address:e?.address||null,mobile:e?.customer?.mobile||null,configuration:e?.configuration||null,order_method:e?.orderMethod||`delivery`})});return this.cache.unshift(t),t},async load(){return this.cache=await u(`/orders`),this.cache},list(){return this.cache},byId(e){return this.cache.find(t=>t.id===e||t.order_number===e||t.orderId===e)||null}},ee=`data:image/svg+xml;charset=UTF-8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%0A%20%20%20%20%20%20%20%20%20width%3D%2264%22%0A%20%20%20%20%20%20%20%20%20height%3D%2264%22%0A%20%20%20%20%20%20%20%20%20viewBox%3D%220%200%2064%2064%22%3E%0A%20%20%20%20%20%20%3Crect%0A%20%20%20%20%20%20%20%20width%3D%2264%22%0A%20%20%20%20%20%20%20%20height%3D%2264%22%0A%20%20%20%20%20%20%20%20rx%3D%2212%22%0A%20%20%20%20%20%20%20%20fill%3D%22%231E7A3D%22%0A%20%20%20%20%20%20%2F%3E%0A%20%20%20%20%20%20%3Cpath%0A%20%20%20%20%20%20%20%20d%3D%22M32%2014%20C20%2014%2014%2024%2014%2034%20C14%2044%2022%2050%2032%2050%20C42%2050%2050%2044%2050%2034%20C50%2024%2044%2014%2032%2014%20Z%22%0A%20%20%20%20%20%20%20%20fill%3D%22none%22%0A%20%20%20%20%20%20%20%20stroke%3D%22%23ffffff%22%0A%20%20%20%20%20%20%20%20stroke-width%3D%222.4%22%0A%20%20%20%20%20%20%2F%3E%0A%20%20%20%20%20%20%3Cpath%0A%20%20%20%20%20%20%20%20d%3D%22M32%2020%20V44%20M32%2044%20L24%2036%20M32%2038%20L40%2030%22%0A%20%20%20%20%20%20%20%20fill%3D%22none%22%0A%20%20%20%20%20%20%20%20stroke%3D%22%23ffffff%22%0A%20%20%20%20%20%20%20%20stroke-width%3D%222.2%22%0A%20%20%20%20%20%20%20%20stroke-linecap%3D%22round%22%0A%20%20%20%20%20%20%2F%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20`,v=null;function y(){return v||(v=fetch(n.logoMark).then(e=>{if(!e.ok)throw Error(`logo fetch failed`);return e.blob()}).then(e=>new Promise((t,n)=>{let r=new FileReader;r.onload=()=>t(r.result),r.onerror=n,r.readAsDataURL(e)})).catch(()=>ee),v)}function b(e){return`INV-${e.order_number||e.id}`}var te={async buildInvoiceHtml(e){let t=await y(),r=new Date(e.created_at);return`
+      <div
+        style="
+          font-family: 'Inter', Arial, sans-serif;
+          color:#2A2E29;
+          max-width:720px;
+          margin:0 auto;
+          background:#FCFBF8;
+        "
+      >
 
-      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:24px; padding:36px 40px 24px; border-bottom:4px solid #1E7A3D;">
-        <div style="display:flex; align-items:center; gap:14px;">
-          <img src="${t}" alt="Farm Craft logo" width="56" height="56" style="width:56px; height:56px; border-radius:12px; object-fit:contain; display:block;" />
-          <div>
-            <div style="font-size:22px; font-weight:700; letter-spacing:0.5px; color:#134A26;">FARM CRAFT</div>
-            <div style="font-size:11px; color:#666; margin-top:2px;">Agricultural Machinery &amp; Grain Handling Equipment</div>
-            <div style="font-size:11px; color:#666; margin-top:2px;">GSTIN: ${n.gstin}</div>
-          </div>
-        </div>
-        <div style="text-align:right;">
-          <div style="font-size:20px; font-weight:700; color:#1E7A3D; letter-spacing:1px;">INVOICE</div>
-          <div style="font-size:12px; color:#666; margin-top:6px;">Invoice No: <strong style="color:#2A2E29;">${v(e)}</strong></div>
-          <div style="font-size:12px; color:#666;">Order ID: <strong style="color:#2A2E29;">${e.order_number||e.id}</strong></div>
-          <div style="font-size:12px; color:#666;">Date: <strong style="color:#2A2E29;">${r.toLocaleDateString(`en-IN`,{day:`2-digit`,month:`short`,year:`numeric`})}</strong></div>
-        </div>
-      </div>
+        <div
+          style="
+            display:flex;
+            justify-content:space-between;
+            align-items:flex-start;
+            gap:24px;
+            padding:36px 40px 24px;
+            border-bottom:4px solid #1E7A3D;
+          "
+        >
 
-      <div style="padding:24px 40px 0;">
-        <div style="background:#134A26; color:#fff; border-radius:14px; padding:16px 20px; display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
-          <div>
-            <div style="font-size:10px; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,0.6);">Purchase Code</div>
-            <div style="font-size:20px; font-weight:700; letter-spacing:2px; margin-top:2px;">${e.purchase_code}</div>
+          <div
+            style="
+              display:flex;
+              align-items:center;
+              gap:14px;
+            "
+          >
+
+            <img
+              src="${t}"
+              alt="Farm Craft logo"
+              width="56"
+              height="56"
+              style="
+                width:56px;
+                height:56px;
+                border-radius:12px;
+                object-fit:contain;
+                display:block;
+              "
+            />
+
+            <div>
+              <div
+                style="
+                  font-size:22px;
+                  font-weight:700;
+                  letter-spacing:0.5px;
+                  color:#134A26;
+                "
+              >
+                FARM CRAFT
+              </div>
+
+              <div
+                style="
+                  font-size:11px;
+                  color:#666;
+                  margin-top:2px;
+                "
+              >
+                Agricultural Machinery &amp; Grain Handling Equipment
+              </div>
+
+              <div
+                style="
+                  font-size:11px;
+                  color:#666;
+                  margin-top:2px;
+                "
+              >
+                GSTIN: ${n.gstin}
+              </div>
+            </div>
           </div>
+
           <div style="text-align:right;">
-            <div style="font-size:10px; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,0.6);">Status</div>
-            <div style="font-size:13px; font-weight:600; margin-top:2px;">${e.status}</div>
+
+            <div
+              style="
+                font-size:20px;
+                font-weight:700;
+                color:#1E7A3D;
+                letter-spacing:1px;
+              "
+            >
+              INVOICE
+            </div>
+
+            <div
+              style="
+                font-size:12px;
+                color:#666;
+                margin-top:6px;
+              "
+            >
+              Invoice No:
+              <strong style="color:#2A2E29;">
+                ${b(e)}
+              </strong>
+            </div>
+
+            <div
+              style="
+                font-size:12px;
+                color:#666;
+              "
+            >
+              Order ID:
+              <strong style="color:#2A2E29;">
+                ${e.order_number||e.id}
+              </strong>
+            </div>
+
+            <div
+              style="
+                font-size:12px;
+                color:#666;
+              "
+            >
+              Date:
+              <strong style="color:#2A2E29;">
+                ${r.toLocaleDateString(`en-IN`,{day:`2-digit`,month:`short`,year:`numeric`})}
+              </strong>
+            </div>
+
           </div>
         </div>
 
-        <div style="display:flex; gap:32px; margin-bottom:24px;">
-          <div style="flex:1;">
-            <div style="font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:#888; margin-bottom:6px; font-weight:600;">Billed To</div>
-            <div style="font-size:13px; line-height:1.6;">
-              <div style="font-weight:600;">${e.customer_snapshot?.name||``}</div>
-              <div>${e.customer_snapshot?.email||``}</div>
-              <div>${e.customer_snapshot?.mobile||``}</div>
+        <div style="padding:24px 40px 0;">
+
+          <div
+            style="
+              background:#134A26;
+              color:#fff;
+              border-radius:14px;
+              padding:16px 20px;
+              display:flex;
+              justify-content:space-between;
+              align-items:center;
+              margin-bottom:24px;
+            "
+          >
+
+            <div>
+              <div
+                style="
+                  font-size:10px;
+                  text-transform:uppercase;
+                  letter-spacing:1px;
+                  color:rgba(255,255,255,0.6);
+                "
+              >
+                Purchase Code
+              </div>
+
+              <div
+                style="
+                  font-size:20px;
+                  font-weight:700;
+                  letter-spacing:2px;
+                  margin-top:2px;
+                "
+              >
+                ${e.purchase_code||`—`}
+              </div>
+            </div>
+
+            <div style="text-align:right;">
+
+              <div
+                style="
+                  font-size:10px;
+                  text-transform:uppercase;
+                  letter-spacing:1px;
+                  color:rgba(255,255,255,0.6);
+                "
+              >
+                Status
+              </div>
+
+              <div
+                style="
+                  font-size:13px;
+                  font-weight:600;
+                  margin-top:2px;
+                "
+              >
+                ${e.status||`—`}
+              </div>
+
             </div>
           </div>
-          <div style="flex:1;">
-            <div style="font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:#888; margin-bottom:6px; font-weight:600;">Delivery Address</div>
-            <div style="font-size:13px; line-height:1.6;">
-              <div>${e.shipping_address?.line1||e.shipping_address?.address||`—`}</div>
-              <div>${[e.shipping_address?.city,e.shipping_address?.state,e.shipping_address?.pincode].filter(Boolean).join(`, `)||``}</div>
+
+          <div
+            style="
+              display:flex;
+              gap:32px;
+              margin-bottom:24px;
+            "
+          >
+
+            <div style="flex:1;">
+
+              <div
+                style="
+                  font-size:11px;
+                  text-transform:uppercase;
+                  letter-spacing:0.5px;
+                  color:#888;
+                  margin-bottom:6px;
+                  font-weight:600;
+                "
+              >
+                Billed To
+              </div>
+
+              <div
+                style="
+                  font-size:13px;
+                  line-height:1.6;
+                "
+              >
+
+                <div style="font-weight:600;">
+                  ${e.customer_snapshot?.name||``}
+                </div>
+
+                <div>
+                  ${e.customer_snapshot?.email||``}
+                </div>
+
+                <div>
+                  ${e.customer_snapshot?.mobile||``}
+                </div>
+
+              </div>
             </div>
-          </div>
-          <div style="flex:1;">
-            <div style="font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:#888; margin-bottom:6px; font-weight:600;">From</div>
-            <div style="font-size:13px; line-height:1.6;">
-              <div style="font-weight:600;">${n.name}</div>
-              <div>${n.email}</div>
-              <div>${n.phone}</div>
+
+            <div style="flex:1;">
+
+              <div
+                style="
+                  font-size:11px;
+                  text-transform:uppercase;
+                  letter-spacing:0.5px;
+                  color:#888;
+                  margin-bottom:6px;
+                  font-weight:600;
+                "
+              >
+                Delivery Address
+              </div>
+
+              <div
+                style="
+                  font-size:13px;
+                  line-height:1.6;
+                "
+              >
+
+                <div>
+                  ${e.shipping_address?.line1||e.shipping_address?.address||`—`}
+                </div>
+
+                <div>
+                  ${[e.shipping_address?.city,e.shipping_address?.state,e.shipping_address?.pincode].filter(Boolean).join(`, `)||``}
+                </div>
+
+              </div>
             </div>
+
+            <div style="flex:1;">
+
+              <div
+                style="
+                  font-size:11px;
+                  text-transform:uppercase;
+                  letter-spacing:0.5px;
+                  color:#888;
+                  margin-bottom:6px;
+                  font-weight:600;
+                "
+              >
+                From
+              </div>
+
+              <div
+                style="
+                  font-size:13px;
+                  line-height:1.6;
+                "
+              >
+
+                <div style="font-weight:600;">
+                  ${n.name}
+                </div>
+
+                <div>
+                  ${n.email}
+                </div>
+
+                <div>
+                  ${n.phone}
+                </div>
+
+              </div>
+            </div>
+
           </div>
+
+          <table
+            style="
+              width:100%;
+              border-collapse:collapse;
+              margin-bottom:28px;
+            "
+          >
+
+            <thead>
+
+              <tr
+                style="
+                  background:#E8F3EC;
+                  text-align:left;
+                "
+              >
+
+                <th
+                  style="
+                    padding:10px 12px;
+                    font-size:11px;
+                    text-transform:uppercase;
+                    letter-spacing:0.5px;
+                    color:#134A26;
+                    border-radius:8px 0 0 8px;
+                  "
+                >
+                  Product
+                </th>
+
+                <th
+                  style="
+                    padding:10px 12px;
+                    font-size:11px;
+                    text-transform:uppercase;
+                    letter-spacing:0.5px;
+                    color:#134A26;
+                  "
+                >
+                  Configuration
+                </th>
+
+                <th
+                  style="
+                    padding:10px 12px;
+                    font-size:11px;
+                    text-transform:uppercase;
+                    letter-spacing:0.5px;
+                    color:#134A26;
+                    text-align:center;
+                    border-radius:0 8px 8px 0;
+                  "
+                >
+                  Qty
+                </th>
+
+              </tr>
+
+            </thead>
+
+            <tbody>
+
+              ${e.items?.map(e=>`
+                      <tr>
+
+                        <td
+                          style="
+                            padding:12px;
+                            border-bottom:1px solid #E4E2D9;
+                            font-size:13px;
+                            font-weight:600;
+                          "
+                        >
+                          ${e.product_name||``}
+                        </td>
+
+                        <td
+                          style="
+                            padding:12px;
+                            border-bottom:1px solid #E4E2D9;
+                            font-size:12px;
+                            color:#666;
+                          "
+                        >
+                          ${e.configuration||`—`}
+                        </td>
+
+                        <td
+                          style="
+                            padding:12px;
+                            border-bottom:1px solid #E4E2D9;
+                            font-size:13px;
+                            text-align:center;
+                          "
+                        >
+                          ${e.quantity||0}
+                        </td>
+
+                      </tr>
+                    `).join(``)||``}
+
+            </tbody>
+          </table>
+
+          <div
+            style="
+              display:flex;
+              gap:32px;
+              margin-bottom:28px;
+              font-size:12px;
+              color:#666;
+            "
+          >
+
+            <div>
+              <span style="color:#888;">
+                Payment Method:
+              </span>
+
+              <strong style="color:#2A2E29;">
+                ${e.payment_method||`—`}
+              </strong>
+            </div>
+
+            <div>
+              <span style="color:#888;">
+                Order Date:
+              </span>
+
+              <strong style="color:#2A2E29;">
+                ${r.toLocaleDateString(`en-IN`)}
+              </strong>
+            </div>
+
+          </div>
+
         </div>
 
-        <table style="width:100%; border-collapse:collapse; margin-bottom:28px;">
-          <thead>
-            <tr style="background:#E8F3EC; text-align:left;">
-              <th style="padding:10px 12px; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:#134A26; border-radius:8px 0 0 8px;">Product</th>
-              <th style="padding:10px 12px; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:#134A26;">Configuration</th>
-              <th style="padding:10px 12px; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:#134A26; text-align:center; border-radius:0 8px 8px 0;">Qty</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${e.items?.map(e=>`
-            <tr>
-              <td style="padding:12px; border-bottom:1px solid #E4E2D9; font-size:13px; font-weight:600;">${e.product_name||``}</td>
-              <td style="padding:12px; border-bottom:1px solid #E4E2D9; font-size:12px; color:#666;">${e.configuration||`—`}</td>
-              <td style="padding:12px; border-bottom:1px solid #E4E2D9; font-size:13px; text-align:center;">${e.quantity||0}</td>
-            </tr>`).join(``)||``}
-          </tbody>
-        </table>
+        <div
+          style="
+            border-top:1px solid #E4E2D9;
+            padding:20px 40px 32px;
+            font-size:11px;
+            color:#999;
+            text-align:center;
+            line-height:1.7;
+          "
+        >
+          Thank you for choosing Farm Craft.
+          Our team will contact you regarding order confirmation and delivery.
+          <br />
 
-        <div style="display:flex; gap:32px; margin-bottom:28px; font-size:12px; color:#666;">
-          <div><span style="color:#888;">Payment Method:</span> <strong style="color:#2A2E29;">${e.payment_method||`—`}</strong></div>
-          <div><span style="color:#888;">Order Date:</span> <strong style="color:#2A2E29;">${r.toLocaleDateString(`en-IN`)}</strong></div>
+          This is a demo invoice generated for preview purposes —
+          no real payment has been processed.
+
+          <br />
+
+          Farm Craft &middot;
+          ${n.address} &middot;
+          ${n.email} &middot;
+          ${n.phone}
         </div>
+
       </div>
+    `},async downloadInvoice(e){let t=await this.buildInvoiceHtml(e),n=`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="utf-8" />
 
-      <div style="border-top:1px solid #E4E2D9; padding:20px 40px 32px; font-size:11px; color:#999; text-align:center; line-height:1.7;">
-        Thank you for choosing Farm Craft. Our team will contact you regarding order confirmation and delivery.<br />
-        This is a demo invoice generated for preview purposes — no real payment has been processed.<br />
-        Farm Craft &middot; ${n.address} &middot; ${n.email} &middot; ${n.phone}
-      </div>
-    </div>
-    `},async downloadInvoice(e){let t=await this.buildInvoiceHtml(e),n=`<!DOCTYPE html><html><head><meta charset="utf-8" />
-      <title>Invoice ${v(e)} — Farm Craft</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <style>
-        body { margin:0; padding:32px 16px; background:#F1EFE7; font-family: Inter, Arial, sans-serif; }
-        @media print { body { background:#fff; padding:0; } }
-        table { width:100%; }
-      </style>
-      </head><body>${t}</body></html>`,r=new Blob([n],{type:`text/html`}),i=URL.createObjectURL(r),a=document.createElement(`a`);a.href=i,a.download=`FarmCraft-Invoice-${e.order_number||e.id}.html`,document.body.appendChild(a),a.click(),a.remove(),URL.revokeObjectURL(i)}};function y(){window.lucide&&window.lucide.createIcons()}function b(e,t={}){let n=document.getElementById(`toast-root`),r=document.createElement(`div`),i=t.type===`error`;r.className=`toast-enter flex items-center gap-2 px-4 py-3 rounded-xl shadow-soft text-sm font-medium ${i?`bg-fc-charcoal text-white`:`bg-fc-green text-white`}`,r.innerHTML=`<i data-lucide="${i?`alert-circle`:`check-circle-2`}" class="w-4 h-4 shrink-0"></i><span>${e}</span>`,n.appendChild(r),y(),setTimeout(()=>{r.style.transition=`opacity .3s ease, transform .3s ease`,r.style.opacity=`0`,r.style.transform=`translateY(-6px)`,setTimeout(()=>r.remove(),300)},2600)}function x(e,{size:t=`text-fc-charcoal font-display font-semibold`}={}){return e.price===null||e.price===void 0?`<span class="${t}">Price on Request</span>`:e.hasDiscount?`<span class="flex items-center gap-2 flex-wrap">
+          <title>
+            Invoice ${b(e)} — Farm Craft
+          </title>
+
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1"
+          />
+
+          <style>
+            body {
+              margin: 0;
+              padding: 32px 16px;
+              background: #F1EFE7;
+              font-family: Inter, Arial, sans-serif;
+            }
+
+            @media print {
+              body {
+                background: #fff;
+                padding: 0;
+              }
+            }
+
+            table {
+              width: 100%;
+            }
+          </style>
+        </head>
+
+        <body>
+          ${t}
+        </body>
+      </html>
+    `,r=new Blob([n],{type:`text/html`}),i=URL.createObjectURL(r),a=document.createElement(`a`);a.href=i,a.download=`FarmCraft-Invoice-${e.order_number||e.id}.html`,document.body.appendChild(a),a.click(),a.remove(),URL.revokeObjectURL(i)}};function x(){window.lucide&&window.lucide.createIcons()}function S(e,t={}){let n=document.getElementById(`toast-root`),r=document.createElement(`div`),i=t.type===`error`;r.className=`toast-enter flex items-center gap-2 px-4 py-3 rounded-xl shadow-soft text-sm font-medium ${i?`bg-fc-charcoal text-white`:`bg-fc-green text-white`}`,r.innerHTML=`<i data-lucide="${i?`alert-circle`:`check-circle-2`}" class="w-4 h-4 shrink-0"></i><span>${e}</span>`,n.appendChild(r),x(),setTimeout(()=>{r.style.transition=`opacity .3s ease, transform .3s ease`,r.style.opacity=`0`,r.style.transform=`translateY(-6px)`,setTimeout(()=>r.remove(),300)},2600)}function C(e,{size:t=`text-fc-charcoal font-display font-semibold`}={}){return e.price===null||e.price===void 0?`<span class="${t}">Price on Request</span>`:e.hasDiscount?`<span class="flex items-center gap-2 flex-wrap">
       <span class="${t}">₹${Number(e.price).toLocaleString(`en-IN`)}</span>
       <span class="text-sm text-fc-slate/50 line-through">₹${Number(e.listPrice).toLocaleString(`en-IN`)}</span>
-    </span>`:`<span class="${t}">₹${Number(e.price).toLocaleString(`en-IN`)}</span>`}var ne=`data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22300%22%20viewBox%3D%220%200%20400%20300%22%3E%0A%20%20%20%20%20%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22%23E8F3EC%22%2F%3E%0A%20%20%20%20%20%3Cg%20fill%3D%22none%22%20stroke%3D%22%231E7A3D%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20opacity%3D%220.55%22%3E%0A%20%20%20%20%20%20%20%3Crect%20x%3D%22130%22%20y%3D%22108%22%20width%3D%22140%22%20height%3D%22100%22%20rx%3D%2210%22%2F%3E%0A%20%20%20%20%20%20%20%3Cpath%20d%3D%22M130%20150%20L170%20108%20L230%20108%20L270%20150%22%2F%3E%0A%20%20%20%20%20%20%20%3Ccircle%20cx%3D%22200%22%20cy%3D%22172%22%20r%3D%2216%22%2F%3E%0A%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%3C%2Fsvg%3E`;function S(e,t,n=``){return`<img src="${e}" alt="${t}" class="${n}" loading="lazy"
-    onerror="this.onerror=null;this.src='${ne}';this.className='${n} object-contain p-10 bg-fc-greenlight';" />`}function C(e){return`<span class="inline-flex items-center gap-1 text-xs font-medium px-2 py-1 rounded-full ${{"In Stock":`bg-fc-greenlight text-fc-green`,"Low Stock":`bg-amber-50 text-amber-700`,"Out of Stock":`bg-red-50 text-red-600`}[e]||`bg-gray-100 text-gray-600`}">
+    </span>`:`<span class="${t}">₹${Number(e.price).toLocaleString(`en-IN`)}</span>`}var ne=`data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22300%22%20viewBox%3D%220%200%20400%20300%22%3E%0A%20%20%20%20%20%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22%23E8F3EC%22%2F%3E%0A%20%20%20%20%20%3Cg%20fill%3D%22none%22%20stroke%3D%22%231E7A3D%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20opacity%3D%220.55%22%3E%0A%20%20%20%20%20%20%20%3Crect%20x%3D%22130%22%20y%3D%22108%22%20width%3D%22140%22%20height%3D%22100%22%20rx%3D%2210%22%2F%3E%0A%20%20%20%20%20%20%20%3Cpath%20d%3D%22M130%20150%20L170%20108%20L230%20108%20L270%20150%22%2F%3E%0A%20%20%20%20%20%20%20%3Ccircle%20cx%3D%22200%22%20cy%3D%22172%22%20r%3D%2216%22%2F%3E%0A%20%20%20%20%20%3C%2Fg%3E%0A%20%20%20%3C%2Fsvg%3E`;function w(e,t,n=``){return`<img src="${e}" alt="${t}" class="${n}" loading="lazy"
+    onerror="this.onerror=null;this.src='${ne}';this.className='${n} object-contain p-10 bg-fc-greenlight';" />`}function T(e){return`<span class="inline-flex items-center gap-1 text-xs font-medium px-2 py-1 rounded-full ${{"In Stock":`bg-fc-greenlight text-fc-green`,"Low Stock":`bg-amber-50 text-amber-700`,"Out of Stock":`bg-red-50 text-red-600`}[e]||`bg-gray-100 text-gray-600`}">
     <span class="w-1.5 h-1.5 rounded-full ${e===`In Stock`?`bg-fc-green`:e===`Low Stock`?`bg-amber-500`:`bg-red-500`}"></span>
     ${e}
-  </span>`}function w(e,{showRemoveFromFavorites:t=!1}={}){let n=p.getWishlist().includes(e.id);return`
+  </span>`}function E(e,{showRemoveFromFavorites:t=!1}={}){let n=h.getWishlist().includes(e.id);return`
   <article class="group bg-white rounded-2xl border border-fc-line shadow-card hover:shadow-soft transition-shadow duration-300 overflow-hidden flex flex-col">
     <a href="#/product/${e.slug}" class="zoom-wrap block relative aspect-[4/3] bg-fc-greenlight">
-      ${S(e.images[0],e.name,`w-full h-full object-cover`)}
+      ${w(e.images[0],e.name,`w-full h-full object-cover`)}
       <button data-wishlist="${e.id}" aria-label="Toggle wishlist" aria-pressed="${n}"
         class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur flex items-center justify-center shadow-card hover:scale-105 transition-transform">
         <i data-lucide="heart" class="w-4 h-4 ${n?`text-fc-wheat fill-fc-wheat`:`text-fc-charcoal`}"></i>
@@ -113,13 +534,13 @@
     <div class="p-4 flex flex-col gap-2 flex-1">
       <div class="flex items-center justify-between gap-2">
         <span class="text-[11px] uppercase tracking-wide text-fc-green font-semibold">${e.category.replace(/-/g,` `)}</span>
-        ${C(e.stockStatus)}
+        ${T(e.stockStatus)}
       </div>
       <a href="#/product/${e.slug}" class="font-display font-semibold text-base leading-snug hover:text-fc-green transition-colors">${e.name}</a>
       <p class="text-sm text-fc-slate/80 clamp-2">${e.description}</p>
       <div class="text-xs text-fc-slate/70">${e.specifications[0]?.label}: <strong class="text-fc-charcoal">${e.specifications[0]?.value}</strong></div>
       <div class="mt-auto pt-3 flex items-center justify-between">
-        ${x(e)}
+        ${C(e)}
       </div>
       <div class="flex gap-2 pt-1">
         <a href="#/product/${e.slug}" class="flex-1 text-center text-sm font-medium border border-fc-line rounded-xl py-2 hover:border-fc-green hover:text-fc-green transition-colors">View Details</a>
@@ -127,7 +548,7 @@
       </div>
       ${t?`<button data-wishlist="${e.id}" class="text-xs font-medium text-fc-slate/60 hover:text-red-600 transition-colors mt-1 text-left">Remove from Favorites</button>`:``}
     </div>
-  </article>`}function T(){let e=u.getSession(),t=p.getWishlist().length;return`
+  </article>`}function D(){let e=f.getSession(),t=h.getWishlist().length;return`
   <header id="site-header" class="sticky top-0 z-50 hdr-blur bg-white/80 border-b border-fc-line transition-shadow">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="h-16 flex items-center justify-between gap-4">
@@ -190,7 +611,7 @@
         <a href="#/orders" class="py-2.5">My Orders</a>
       </nav>
     </div>
-  </header>`}function E(){let e=p.getWishlist().length;return`
+  </header>`}function re(){let e=h.getWishlist().length;return`
   <nav class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white border-t border-fc-line grid grid-cols-5 pb-[env(safe-area-inset-bottom)]">
     <a href="#/" class="flex flex-col items-center justify-center gap-0.5 py-2.5 text-fc-slate">
       <i data-lucide="home" class="w-5 h-5"></i><span class="text-[11px]">Home</span>
@@ -209,7 +630,7 @@
     <a href="#/profile" class="flex flex-col items-center justify-center gap-0.5 py-2.5 text-fc-slate">
       <i data-lucide="user" class="w-5 h-5"></i><span class="text-[11px]">Profile</span>
     </a>
-  </nav>`}function D(){return`
+  </nav>`}function ie(){return`
   <footer class="bg-fc-charcoal text-white/90 mt-24 pb-20 lg:pb-0">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 grid grid-cols-2 lg:grid-cols-5 gap-10">
       <div class="col-span-2 lg:col-span-2">
@@ -260,7 +681,7 @@
     <h3 class="font-display font-semibold text-lg mb-1.5">${t}</h3>
     <p class="text-sm text-fc-slate/70 max-w-sm mb-6">${n}</p>
     ${r?`<a href="${r}" class="bg-fc-green text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-fc-greendark transition-colors">${i}</a>`:``}
-  </div>`}function k(){let e=document.querySelectorAll(`.reveal`);if(!(`IntersectionObserver`in window)){e.forEach(e=>e.classList.add(`in`));return}let t=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&(e.target.classList.add(`in`),t.unobserve(e.target))})},{threshold:.12});e.forEach(e=>t.observe(e))}function re(e){let t=document.getElementById(`mobile-menu-btn`),n=document.getElementById(`mobile-menu`);t&&n&&t.addEventListener(`click`,()=>n.classList.toggle(`hidden`)),[`header-search`,`header-search-mobile`].forEach(e=>{let t=document.getElementById(e);t&&t.addEventListener(`submit`,e=>{e.preventDefault();let n=new FormData(t).get(`q`);window.location.hash=`#/shop?q=${encodeURIComponent(n||``)}`})})}function ie(){return`
+  </div>`}function k(){let e=document.querySelectorAll(`.reveal`);if(!(`IntersectionObserver`in window)){e.forEach(e=>e.classList.add(`in`));return}let t=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&(e.target.classList.add(`in`),t.unobserve(e.target))})},{threshold:.12});e.forEach(e=>t.observe(e))}function ae(e){let t=document.getElementById(`mobile-menu-btn`),n=document.getElementById(`mobile-menu`);t&&n&&t.addEventListener(`click`,()=>n.classList.toggle(`hidden`)),[`header-search`,`header-search-mobile`].forEach(e=>{let t=document.getElementById(e);t&&t.addEventListener(`submit`,e=>{e.preventDefault();let n=new FormData(t).get(`q`);window.location.hash=`#/shop?q=${encodeURIComponent(n||``)}`})})}function oe(){return`
   <div class="min-h-[calc(100vh-64px)] grid lg:grid-cols-2">
     <div class="hidden lg:block relative bg-fc-charcoal">
       <img src="assets/products/collector-field.jpeg" class="absolute inset-0 w-full h-full object-cover opacity-70" alt="Farm Craft machinery in a field" />
@@ -290,7 +711,7 @@
         </form>
       </div>
     </div>
-  </div>`}function ae(e){let t=document.getElementById(`mobile-form`),n=document.getElementById(`login-mobile`);n?.addEventListener(`input`,()=>{n.value=n.value.replace(/\D/g,``).slice(0,10)}),t?.addEventListener(`submit`,async e=>{e.preventDefault();let n=new FormData(t),r=String(n.get(`name`)||``).trim(),i=String(n.get(`mobile`)||``).trim(),a=t.querySelector(`[data-error-for="name"]`),o=t.querySelector(`[data-error-for="mobile"]`);if(r.length<2){a.classList.remove(`hidden`);return}if(a.classList.add(`hidden`),!/^[6-9]\d{9}$/.test(i)){o.classList.remove(`hidden`);return}o.classList.add(`hidden`);let s=await u.loginCustomer(r,i);s.ok?window.location.hash=`#/`:b(s.error,{type:`error`})})}function oe(){let n=f.list().slice(0,8);return`
+  </div>`}function se(e){let t=document.getElementById(`mobile-form`),n=document.getElementById(`login-mobile`);n?.addEventListener(`input`,()=>{n.value=n.value.replace(/\D/g,``).slice(0,10)}),t?.addEventListener(`submit`,async e=>{e.preventDefault();let n=new FormData(t),r=String(n.get(`name`)||``).trim(),i=String(n.get(`mobile`)||``).trim(),a=t.querySelector(`[data-error-for="name"]`),o=t.querySelector(`[data-error-for="mobile"]`);if(r.length<2){a.classList.remove(`hidden`);return}if(a.classList.add(`hidden`),!/^[6-9]\d{9}$/.test(i)){o.classList.remove(`hidden`);return}o.classList.add(`hidden`);let s=await f.loginCustomer(r,i);s.ok?window.location.hash=`#/`:S(s.error,{type:`error`})})}function ce(){let n=m.list().slice(0,8);return`
   <section class="relative overflow-hidden bg-fc-charcoal text-white">
     <div class="absolute inset-0">
       <img src="assets/products/collector-field.jpeg" class="w-full h-full object-cover opacity-40" alt="" />
@@ -364,7 +785,7 @@
         </a>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        ${n.length?n.map(e=>w(e)).join(``):f.error?`<div class="col-span-full text-center py-10 text-sm text-fc-slate/60">Could not load products right now. Please refresh the page.</div>`:`<div class="col-span-full text-center py-10 text-sm text-fc-slate/60">No products available yet.</div>`}
+        ${n.length?n.map(e=>E(e)).join(``):m.error?`<div class="col-span-full text-center py-10 text-sm text-fc-slate/60">Could not load products right now. Please refresh the page.</div>`:`<div class="col-span-full text-center py-10 text-sm text-fc-slate/60">No products available yet.</div>`}
       </div>
     </div>
   </section>
@@ -402,7 +823,7 @@
         <a href="#/about" class="bg-fc-wheat hover:brightness-95 transition-all text-fc-charcoal font-semibold px-6 py-3 rounded-full">Visit Our Company</a>
       </div>
     </div>
-  </section>`}function se({q:e=``,category:t=``,availability:n=``}={}){let r=f.search(e,{category:t,availability:n}),i=r.length||f.error||f.list().length===0?r:f.list();return`
+  </section>`}function le({q:e=``,category:t=``,availability:n=``}={}){let r=m.search(e,{category:t,availability:n}),i=r.length||m.error||m.list().length===0?r:m.list();return`
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
     <div class="mb-8">
       <h1 class="font-display text-2xl sm:text-3xl font-semibold">Products</h1>
@@ -422,9 +843,9 @@
         </div>
 
         <div id="results-grid" class="grid sm:grid-cols-2 xl:grid-cols-3 gap-5">
-          ${i.length?i.map(e=>w(e)).join(``):``}
+          ${i.length?i.map(e=>E(e)).join(``):``}
         </div>
-        ${i.length?``:f.error?O({icon:`wifi-off`,title:`Could not load products`,body:f.error,actionHref:`#/shop`,actionLabel:`Try Again`}):O(e||t||n?{icon:`search-x`,title:`No matching products`,body:`Try a different search term or clear your filters to see the full catalog.`,actionHref:`#/shop`,actionLabel:`Clear filters`}:{icon:`package-open`,title:`No products available`,body:`Check back soon — new products will appear here as soon as they are added.`})}
+        ${i.length?``:m.error?O({icon:`wifi-off`,title:`Could not load products`,body:m.error,actionHref:`#/shop`,actionLabel:`Try Again`}):O(e||t||n?{icon:`search-x`,title:`No matching products`,body:`Try a different search term or clear your filters to see the full catalog.`,actionHref:`#/shop`,actionLabel:`Clear filters`}:{icon:`package-open`,title:`No products available`,body:`Check back soon — new products will appear here as soon as they are added.`})}
       </div>
     </div>
   </div>
@@ -440,7 +861,7 @@
       </div>
       ${A({category:t,availability:n})}
     </div>
-  </div>`}function A({category:e,availability:t}){let n=[...new Set(f.list().map(e=>e.category).filter(Boolean))].sort();return`
+  </div>`}function A({category:e,availability:t}){let n=[...new Set(m.list().map(e=>e.category).filter(Boolean))].sort();return`
   <form id="filter-form" class="space-y-7">
     <div>
       <h4 class="text-sm font-semibold mb-3">Category</h4>
@@ -473,7 +894,7 @@
       <p class="text-xs text-fc-slate/60 leading-relaxed">5 HP – 16 HP motor range · up to 18 tons/hour transfer capacity across the range.</p>
     </div>
     <button type="submit" class="w-full bg-fc-green text-white text-sm font-medium py-2.5 rounded-xl hover:bg-fc-greendark transition-colors">Apply Filters</button>
-  </form>`}function ce(e){let t=document.getElementById(`open-filters`),n=document.getElementById(`filter-drawer`);t?.addEventListener(`click`,()=>n.classList.remove(`hidden`)),n?.querySelectorAll(`[data-close-drawer]`).forEach(e=>e.addEventListener(`click`,()=>n.classList.add(`hidden`))),document.querySelectorAll(`#filter-form`).forEach(t=>{t.addEventListener(`submit`,n=>{n.preventDefault();let r=new FormData(t),i=new URLSearchParams;e.q&&i.set(`q`,e.q);let a=r.get(`category`),o=r.get(`availability`);a&&i.set(`category`,a),o&&i.set(`availability`,o),window.location.hash=`#/shop?${i.toString()}`})})}function le(e){let t=f.bySlug(e);if(!t)return`<div class="max-w-3xl mx-auto px-4 py-24">${O({icon:`package-x`,title:`Product not found`,body:`This product may have been removed or the link is incorrect.`,actionHref:`#/shop`,actionLabel:`Back to Products`})}</div>`;let n=p.getWishlist().includes(t.id);return`
+  </form>`}function ue(e){let t=document.getElementById(`open-filters`),n=document.getElementById(`filter-drawer`);t?.addEventListener(`click`,()=>n.classList.remove(`hidden`)),n?.querySelectorAll(`[data-close-drawer]`).forEach(e=>e.addEventListener(`click`,()=>n.classList.add(`hidden`))),document.querySelectorAll(`#filter-form`).forEach(t=>{t.addEventListener(`submit`,n=>{n.preventDefault();let r=new FormData(t),i=new URLSearchParams;e.q&&i.set(`q`,e.q);let a=r.get(`category`),o=r.get(`availability`);a&&i.set(`category`,a),o&&i.set(`availability`,o),window.location.hash=`#/shop?${i.toString()}`})})}function de(e){let t=m.bySlug(e);if(!t)return`<div class="max-w-3xl mx-auto px-4 py-24">${O({icon:`package-x`,title:`Product not found`,body:`This product may have been removed or the link is incorrect.`,actionHref:`#/shop`,actionLabel:`Back to Products`})}</div>`;let n=h.getWishlist().includes(t.id);return`
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
     <nav class="text-xs text-fc-slate/60 mb-6 flex items-center gap-1.5">
       <a href="#/shop" class="hover:text-fc-green">Products</a> <span>/</span> <span class="text-fc-charcoal">${t.name}</span>
@@ -482,12 +903,12 @@
     <div class="grid lg:grid-cols-2 gap-10 mb-16">
       <div>
         <div class="zoom-wrap rounded-2xl overflow-hidden border border-fc-line aspect-[4/3] bg-fc-greenlight mb-3" id="gallery-main">
-          ${S(t.images[0],t.name,`w-full h-full object-cover`).replace(`<img `,`<img data-gallery-image `)}
+          ${w(t.images[0],t.name,`w-full h-full object-cover`).replace(`<img `,`<img data-gallery-image `)}
         </div>
         <div class="grid grid-cols-3 gap-3">
           ${t.images.map((e,n)=>`
             <button data-thumb="${e}" class="rounded-xl overflow-hidden border-2 ${n===0?`border-fc-green`:`border-transparent`} aspect-square bg-fc-greenlight">
-              ${S(e,`${t.name} view ${n+1}`,`w-full h-full object-cover`)}
+              ${w(e,`${t.name} view ${n+1}`,`w-full h-full object-cover`)}
             </button>`).join(``)}
         </div>
       </div>
@@ -504,8 +925,8 @@
         <p class="text-fc-slate/75 leading-relaxed mb-5">${t.description}</p>
 
         <div class="flex items-center gap-3 mb-6">
-          ${C(t.stockStatus)}
-          ${x(t,{size:`font-display text-2xl font-semibold`})}
+          ${T(t.stockStatus)}
+          ${C(t,{size:`font-display text-2xl font-semibold`})}
         </div>
 
         <div class="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_3rem] sm:flex gap-2.5 sm:gap-3 mb-3 items-stretch">
@@ -567,15 +988,15 @@
         </div>
       </aside>
     </div>
-  </div>`}function ue(){let e=document.querySelector(`#gallery-main img`);document.querySelectorAll(`[data-thumb]`).forEach(t=>{t.addEventListener(`click`,()=>{e.src=t.getAttribute(`data-thumb`),document.querySelectorAll(`[data-thumb]`).forEach(e=>e.classList.remove(`border-fc-green`)),document.querySelectorAll(`[data-thumb]`).forEach(e=>e.classList.add(`border-transparent`)),t.classList.remove(`border-transparent`),t.classList.add(`border-fc-green`)})})}function de(){let e=p.getWishlist(),t=f.list().filter(t=>e.includes(t.id));return`
+  </div>`}function fe(){let e=document.querySelector(`#gallery-main img`);document.querySelectorAll(`[data-thumb]`).forEach(t=>{t.addEventListener(`click`,()=>{e.src=t.getAttribute(`data-thumb`),document.querySelectorAll(`[data-thumb]`).forEach(e=>e.classList.remove(`border-fc-green`)),document.querySelectorAll(`[data-thumb]`).forEach(e=>e.classList.add(`border-transparent`)),t.classList.remove(`border-transparent`),t.classList.add(`border-fc-green`)})})}function pe(){let e=h.getWishlist(),t=m.list().filter(t=>e.includes(t.id));return`
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
     <h1 class="font-display text-2xl sm:text-3xl font-semibold mb-8">Wishlist</h1>
-    ${t.length?`<div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-5">${t.map(e=>w(e,{showRemoveFromFavorites:!0})).join(``)}</div>`:O({icon:`heart`,title:`Your wishlist is empty`,body:`Save products you like and find them here later.`,actionHref:`#/shop`,actionLabel:`Browse Products`})}
-  </div>`}function fe(e){let t=e.product.price==null?null:Number(e.product.price),n=e.product.discount_price==null?t:Number(e.product.discount_price),r=t!=null&&e.product.discount_price!=null&&Number(e.product.discount_price)<t,i=n==null?`<span>Price on Request</span>`:r?`<span>₹${n.toLocaleString(`en-IN`)}</span> <span class="line-through text-fc-slate/40">₹${t.toLocaleString(`en-IN`)}</span>`:`<span>₹${n.toLocaleString(`en-IN`)}</span>`;return`<div class="bg-white border border-fc-line rounded-2xl p-4 flex gap-4 items-center">${S(e.product.image||`assets/products/collector-diagram.jpeg`,e.product.name,`w-20 h-20 rounded-xl object-cover`)}<div class="flex-1"><div class="font-semibold">${e.product.name}</div><div class="text-sm text-fc-slate/60 flex items-center gap-2">${i}</div><div class="flex items-center gap-2 mt-2"><button data-cart-dec="${e.id}" class="w-8 h-8 border rounded-lg" aria-label="Decrease quantity">−</button><span>${e.quantity}</span><button data-cart-inc="${e.id}" class="w-8 h-8 border rounded-lg" aria-label="Increase quantity">+</button><button data-cart-remove="${e.id}" class="ml-3 text-sm text-red-600">Remove</button></div></div></div>`}var j=[{value:`delivery`,label:`Cash on Delivery`,desc:`Pay in cash when your order is delivered.`},{value:`visit_company`,label:`Visit Company`,desc:`Visit our office to complete the purchase in person.`}];function M(){return j.map((e,t)=>`
+    ${t.length?`<div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-5">${t.map(e=>E(e,{showRemoveFromFavorites:!0})).join(``)}</div>`:O({icon:`heart`,title:`Your wishlist is empty`,body:`Save products you like and find them here later.`,actionHref:`#/shop`,actionLabel:`Browse Products`})}
+  </div>`}function me(e){let t=e.product.price==null?null:Number(e.product.price),n=e.product.discount_price==null?t:Number(e.product.discount_price),r=t!=null&&e.product.discount_price!=null&&Number(e.product.discount_price)<t,i=n==null?`<span>Price on Request</span>`:r?`<span>₹${n.toLocaleString(`en-IN`)}</span> <span class="line-through text-fc-slate/40">₹${t.toLocaleString(`en-IN`)}</span>`:`<span>₹${n.toLocaleString(`en-IN`)}</span>`;return`<div class="bg-white border border-fc-line rounded-2xl p-4 flex gap-4 items-center">${w(e.product.image||`assets/products/collector-diagram.jpeg`,e.product.name,`w-20 h-20 rounded-xl object-cover`)}<div class="flex-1"><div class="font-semibold">${e.product.name}</div><div class="text-sm text-fc-slate/60 flex items-center gap-2">${i}</div><div class="flex items-center gap-2 mt-2"><button data-cart-dec="${e.id}" class="w-8 h-8 border rounded-lg" aria-label="Decrease quantity">−</button><span>${e.quantity}</span><button data-cart-inc="${e.id}" class="w-8 h-8 border rounded-lg" aria-label="Increase quantity">+</button><button data-cart-remove="${e.id}" class="ml-3 text-sm text-red-600">Remove</button></div></div></div>`}var j=[{value:`delivery`,label:`Cash on Delivery`,desc:`Pay in cash when your order is delivered.`},{value:`visit_company`,label:`Visit Company`,desc:`Visit our office to complete the purchase in person.`}];function M(){return j.map((e,t)=>`
     <label class="flex items-start gap-2.5 border border-fc-line rounded-xl px-3.5 py-3 text-sm cursor-pointer has-[:checked]:border-fc-green has-[:checked]:bg-fc-greenlight/40">
       <input type="radio" name="cart-order-method" value="${e.value}" class="mt-0.5" ${t===0?`checked`:``} />
       <span><span class="font-medium block">${e.label}</span><span class="text-xs text-fc-slate/60">${e.desc}</span></span>
-    </label>`).join(``)}function N(e){return e?.order_method===`visit_company`?`Visit Company`:e?.payment_method||`Cash on Delivery`}async function P(){if(!u.isLoggedIn())return z(`view your cart`);try{let e=await m.get();return`<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14"><h1 class="font-display text-2xl sm:text-3xl font-semibold mb-8">Cart</h1>${e.items.length?`<div class="space-y-4">${e.items.map(fe).join(``)}</div><div class="mt-8 rounded-2xl border border-fc-line bg-white p-5"><h3 class="font-display font-semibold mb-4">Checkout</h3><div class="grid sm:grid-cols-2 gap-3"><input id="cart-line1" class="border rounded-xl px-3 py-2.5 text-sm" placeholder="Delivery address" /><input id="cart-city" class="border rounded-xl px-3 py-2.5 text-sm" placeholder="City" /><input id="cart-state" class="border rounded-xl px-3 py-2.5 text-sm" placeholder="State" /><input id="cart-pincode" class="border rounded-xl px-3 py-2.5 text-sm" placeholder="Pincode" /></div><div class="mt-4"><div class="text-sm font-medium mb-2">Order Method</div><div class="grid sm:grid-cols-2 gap-3">${M()}</div></div><div class="mt-5 flex justify-end"><button id="cart-checkout" class="bg-fc-green text-white px-5 py-3 rounded-xl font-medium">Place Order</button></div></div>`:O({icon:`shopping-cart`,title:`Your cart is empty`,body:`Add products to your cart to continue.`,actionHref:`#/shop`,actionLabel:`Browse Products`})}</div>`}catch{return`<div class="max-w-xl mx-auto px-4 py-24 text-center">Unable to load cart.</div>`}}function F(){document.querySelectorAll(`[data-cart-remove]`).forEach(e=>e.addEventListener(`click`,async()=>{await m.remove(e.dataset.cartRemove),window.location.hash=`#/cart`})),document.querySelectorAll(`[data-cart-inc],[data-cart-dec]`).forEach(e=>e.addEventListener(`click`,async()=>{let t=(await m.get()).items.find(t=>t.id===e.dataset.cartInc||t.id===e.dataset.cartDec);if(!t)return;let n=Math.max(1,t.quantity+(e.dataset.cartInc?1:-1));await m.update(t.id,n),window.location.hash=`#/cart`})),document.getElementById(`cart-checkout`)?.addEventListener(`click`,async()=>{let e={line1:document.getElementById(`cart-line1`)?.value.trim(),city:document.getElementById(`cart-city`)?.value.trim(),state:document.getElementById(`cart-state`)?.value.trim(),pincode:document.getElementById(`cart-pincode`)?.value.trim()};if(!e.line1||!e.city||!e.state||!e.pincode){b(`Please complete the delivery address`,{type:`error`});return}let t=document.querySelector(`input[name="cart-order-method"]:checked`)?.value||`delivery`;try{let n=await h.create({customer:u.getSession(),address:e,orderMethod:t});window.location.hash=`#/success/${n.order_number||n.id}`}catch(e){b(e.message||`Could not create order`,{type:`error`})}})}var I={Pending:`bg-amber-50 text-amber-700`,Confirmed:`bg-blue-50 text-blue-700`,Processing:`bg-indigo-50 text-indigo-700`,Dispatched:`bg-purple-50 text-purple-700`,Delivered:`bg-fc-greenlight text-fc-green`,Cancelled:`bg-red-50 text-red-600`};function L(){if(!u.isLoggedIn())return z(`view your orders`);let e=h.list();return`
+    </label>`).join(``)}function N(e){return e?.order_method===`visit_company`?`Visit Company`:e?.payment_method||`Cash on Delivery`}async function P(){if(!f.isLoggedIn())return z(`view your cart`);try{let e=await g.get();return`<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14"><h1 class="font-display text-2xl sm:text-3xl font-semibold mb-8">Cart</h1>${e.items.length?`<div class="space-y-4">${e.items.map(me).join(``)}</div><div class="mt-8 rounded-2xl border border-fc-line bg-white p-5"><h3 class="font-display font-semibold mb-4">Checkout</h3><div class="grid sm:grid-cols-2 gap-3"><input id="cart-line1" class="border rounded-xl px-3 py-2.5 text-sm" placeholder="Delivery address" /><input id="cart-city" class="border rounded-xl px-3 py-2.5 text-sm" placeholder="City" /><input id="cart-state" class="border rounded-xl px-3 py-2.5 text-sm" placeholder="State" /><input id="cart-pincode" class="border rounded-xl px-3 py-2.5 text-sm" placeholder="Pincode" /></div><div class="mt-4"><div class="text-sm font-medium mb-2">Order Method</div><div class="grid sm:grid-cols-2 gap-3">${M()}</div></div><div class="mt-5 flex justify-end"><button id="cart-checkout" class="bg-fc-green text-white px-5 py-3 rounded-xl font-medium">Place Order</button></div></div>`:O({icon:`shopping-cart`,title:`Your cart is empty`,body:`Add products to your cart to continue.`,actionHref:`#/shop`,actionLabel:`Browse Products`})}</div>`}catch{return`<div class="max-w-xl mx-auto px-4 py-24 text-center">Unable to load cart.</div>`}}function F(){document.querySelectorAll(`[data-cart-remove]`).forEach(e=>e.addEventListener(`click`,async()=>{await g.remove(e.dataset.cartRemove),window.location.hash=`#/cart`})),document.querySelectorAll(`[data-cart-inc],[data-cart-dec]`).forEach(e=>e.addEventListener(`click`,async()=>{let t=(await g.get()).items.find(t=>t.id===e.dataset.cartInc||t.id===e.dataset.cartDec);if(!t)return;let n=Math.max(1,t.quantity+(e.dataset.cartInc?1:-1));await g.update(t.id,n),window.location.hash=`#/cart`})),document.getElementById(`cart-checkout`)?.addEventListener(`click`,async()=>{let e={line1:document.getElementById(`cart-line1`)?.value.trim(),city:document.getElementById(`cart-city`)?.value.trim(),state:document.getElementById(`cart-state`)?.value.trim(),pincode:document.getElementById(`cart-pincode`)?.value.trim()};if(!e.line1||!e.city||!e.state||!e.pincode){S(`Please complete the delivery address`,{type:`error`});return}let t=document.querySelector(`input[name="cart-order-method"]:checked`)?.value||`delivery`;try{let n=await _.create({customer:f.getSession(),address:e,orderMethod:t});window.location.hash=`#/success/${n.order_number||n.id}`}catch(e){S(e.message||`Could not create order`,{type:`error`})}})}var I={Pending:`bg-amber-50 text-amber-700`,Confirmed:`bg-blue-50 text-blue-700`,Processing:`bg-indigo-50 text-indigo-700`,Dispatched:`bg-purple-50 text-purple-700`,Delivered:`bg-fc-greenlight text-fc-green`,Cancelled:`bg-red-50 text-red-600`};function L(){if(!f.isLoggedIn())return z(`view your orders`);let e=_.list();return`
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
     <h1 class="font-display text-2xl sm:text-3xl font-semibold mb-8">My Orders</h1>
     ${e.length?`
@@ -597,7 +1018,7 @@
             </div>
           </a>`).join(``)}
       </div>`:O({icon:`receipt`,title:`No orders yet`,body:`Once you get a purchase code, your orders will show up here.`,actionHref:`#/shop`,actionLabel:`Browse Products`})}
-  </div>`}function R(e){let t=h.byId(e);return t?B(t,{compact:!0}):`<div class="max-w-3xl mx-auto px-4 py-24">${O({icon:`file-question`,title:`Order not found`,body:`We could not find this order.`,actionHref:`#/orders`,actionLabel:`Back to Orders`})}</div>`}function z(e){return`<div class="max-w-3xl mx-auto px-4 py-24">${O({icon:`lock`,title:`Please log in`,body:`Log in to ${e}.`,actionHref:`#/login`,actionLabel:`Go to Login`})}</div>`}function B(e,{compact:t=!1}={}){return`
+  </div>`}function R(e){let t=_.byId(e);return t?B(t,{compact:!0}):`<div class="max-w-3xl mx-auto px-4 py-24">${O({icon:`file-question`,title:`Order not found`,body:`We could not find this order.`,actionHref:`#/orders`,actionLabel:`Back to Orders`})}</div>`}function z(e){return`<div class="max-w-3xl mx-auto px-4 py-24">${O({icon:`lock`,title:`Please log in`,body:`Log in to ${e}.`,actionHref:`#/login`,actionLabel:`Go to Login`})}</div>`}function B(e,{compact:t=!1}={}){return`
   <div class="max-w-2xl mx-auto px-4 sm:px-6 py-10 sm:py-16">
     ${t?``:`
       <div class="text-center mb-8">
@@ -634,7 +1055,7 @@
       <a href="#/order/${e.order_number||e.id}" class="flex-1 text-center border border-fc-line font-medium py-2.5 rounded-xl hover:border-fc-green hover:text-fc-green transition-colors">View Order</a>
       <a href="#/shop" class="flex-1 text-center bg-fc-green text-white font-medium py-2.5 rounded-xl hover:bg-fc-greendark transition-colors">Continue Shopping</a>
     </div>
-  </div>`}function V(){let e=document.getElementById(`download-invoice`);e?.addEventListener(`click`,async t=>{let n=t.currentTarget.getAttribute(`data-order`),r=h.byId(n);if(!r){b(`Order not found`,{type:`error`});return}let i=e.innerHTML;e.disabled=!0,e.innerHTML=`<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Preparing invoice…`,y();try{await te.downloadInvoice(r),b(`Invoice downloaded`)}catch{b(`Could not generate the invoice — please try again`,{type:`error`})}finally{e.disabled=!1,e.innerHTML=i,y()}})}function pe(){if(!u.isLoggedIn())return z(`view your profile`);let e=p.getProfile(),t=h.list();return`
+  </div>`}function V(){let e=document.getElementById(`download-invoice`);e?.addEventListener(`click`,async t=>{let n=t.currentTarget.getAttribute(`data-order`),r=_.byId(n);if(!r){S(`Order not found`,{type:`error`});return}let i=e.innerHTML;e.disabled=!0,e.innerHTML=`<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Preparing invoice…`,x();try{await te.downloadInvoice(r),S(`Invoice downloaded`)}catch{S(`Could not generate the invoice — please try again`,{type:`error`})}finally{e.disabled=!1,e.innerHTML=i,x()}})}function he(){if(!f.isLoggedIn())return z(`view your profile`);let e=h.getProfile(),t=_.list();return`
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
     <div class="flex items-center gap-4 mb-10">
       <div class="w-16 h-16 rounded-full bg-fc-green text-white flex items-center justify-center font-display text-xl font-semibold shrink-0">
@@ -684,7 +1105,7 @@
     <button id="logout-btn" class="text-sm font-medium text-red-600 hover:text-red-700 flex items-center gap-2">
       <i data-lucide="log-out" class="w-4 h-4"></i> Logout
     </button>
-  </div>`}function me(){document.getElementById(`logout-btn`)?.addEventListener(`click`,()=>{u.logout(),b(`Logged out`),window.location.hash=`#/`})}function he(){return`
+  </div>`}function ge(){document.getElementById(`logout-btn`)?.addEventListener(`click`,()=>{f.logout(),S(`Logged out`),window.location.hash=`#/`})}function _e(){return`
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
     <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
       <div>
@@ -727,11 +1148,11 @@
         <a href="#/contact" class="bg-fc-wheat hover:brightness-95 transition-all text-fc-charcoal font-semibold px-6 py-3 rounded-full">Visit Our Company</a>
       </div>
     </div>
-  </div>`}function ge(){return`
+  </div>`}function ve(){return`
   <div class="pb-4">
     <section class="relative overflow-hidden bg-fc-charcoal text-white">
       <div class="absolute inset-0">
-        ${S(`assets/products/pipe-frame.jpeg`,`Farm Craft machinery service`,`w-full h-full object-cover opacity-35`)}
+        ${w(`assets/products/pipe-frame.jpeg`,`Farm Craft machinery service`,`w-full h-full object-cover opacity-35`)}
         <div class="absolute inset-0 bg-gradient-to-r from-fc-charcoal via-fc-charcoal/85 to-fc-charcoal/50"></div>
       </div>
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
@@ -756,7 +1177,7 @@
     </section>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-16 sm:space-y-20">
-      ${r.map((e,t)=>_e(e,t)).join(``)}
+      ${r.map((e,t)=>ye(e,t)).join(``)}
     </div>
 
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
@@ -772,10 +1193,10 @@
         </div>
       </div>
     </section>
-  </div>`}function _e(e,t){let n=t%2==1;return`
+  </div>`}function ye(e,t){let n=t%2==1;return`
   <section id="service-${e.id}" class="reveal grid lg:grid-cols-2 gap-10 items-center scroll-mt-24">
     <div class="rounded-3xl overflow-hidden border border-fc-line shadow-card aspect-[4/3] bg-fc-greenlight ${n?`lg:order-2`:``}">
-      ${S(e.image,e.title,`w-full h-full object-cover`)}
+      ${w(e.image,e.title,`w-full h-full object-cover`)}
     </div>
     <div class="${n?`lg:order-1`:``}">
       <div class="flex items-center gap-2.5 mb-3">
@@ -812,7 +1233,7 @@
         <a href="#/contact" class="border border-fc-line text-sm font-medium px-5 py-2.5 rounded-full hover:border-fc-green hover:text-fc-green transition-colors">Contact for This Service</a>
       </div>
     </div>
-  </section>`}function ve(){return`
+  </section>`}function be(){return`
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
     <div class="text-center max-w-xl mx-auto mb-12">
       <h1 class="font-display text-3xl font-semibold mb-3">Get in Touch</h1>
@@ -861,7 +1282,7 @@
         </div>
       </div>
     </div>
-  </div>`}function ye(){let e=document.getElementById(`contact-form`),t=document.getElementById(`c-mobile`);t?.addEventListener(`input`,()=>{t.value=t.value.replace(/\D/g,``).slice(0,10)}),e?.addEventListener(`submit`,n=>{if(n.preventDefault(),!/^[6-9]\d{9}$/.test(String(t?.value||``).trim())){b(`Enter a valid 10-digit Indian mobile number.`,{type:`error`}),t?.focus();return}e.reset(),b(`Your enquiry has been sent — we’ll be in touch shortly.`)})}var H=null;function be(e){let t=u.getSession(),n=p.getAddresses()[0]||{};return{product:e,step:1,customer:{name:t?.name||``,email:t?.email||``,mobile:t?.mobile||``},address:{line1:n.line1||``,city:n.city||``,state:n.state||``,pincode:n.pincode||``},quantity:1,configuration:e.specifications?.[0]?`${e.specifications[0].label}: ${e.specifications[0].value}`:``,orderMethod:`delivery`}}function xe(e){if(!u.isLoggedIn()){b(`Please log in to get a purchase code`,{type:`error`}),window.location.hash=`#/login`;return}let t=f.list().find(t=>t.id===e);if(t){if(!t.stock||t.stock<=0){b(`This product is currently out of stock`,{type:`error`});return}H=be(t),W()}}function U(){let e=document.getElementById(`getcode-modal-root`);e&&e.remove(),H=null}function Se(e){return[`Customer Details`,`Delivery Address`,`Product`,`Order Method`][e-1]}function Ce(){return`
+  </div>`}function xe(){let e=document.getElementById(`contact-form`),t=document.getElementById(`c-mobile`);t?.addEventListener(`input`,()=>{t.value=t.value.replace(/\D/g,``).slice(0,10)}),e?.addEventListener(`submit`,n=>{if(n.preventDefault(),!/^[6-9]\d{9}$/.test(String(t?.value||``).trim())){S(`Enter a valid 10-digit Indian mobile number.`,{type:`error`}),t?.focus();return}e.reset(),S(`Your enquiry has been sent — we’ll be in touch shortly.`)})}var H=null;function Se(e){let t=f.getSession(),n=h.getAddresses()[0]||{};return{product:e,step:1,customer:{name:t?.name||``,email:t?.email||``,mobile:t?.mobile||``},address:{line1:n.line1||``,city:n.city||``,state:n.state||``,pincode:n.pincode||``},quantity:1,configuration:e.specifications?.[0]?`${e.specifications[0].label}: ${e.specifications[0].value}`:``,orderMethod:`delivery`}}function Ce(e){if(!f.isLoggedIn()){S(`Please log in to get a purchase code`,{type:`error`}),window.location.hash=`#/login`;return}let t=m.list().find(t=>t.id===e);if(t){if(!t.stock||t.stock<=0){S(`This product is currently out of stock`,{type:`error`});return}H=Se(t),W()}}function U(){let e=document.getElementById(`getcode-modal-root`);e&&e.remove(),H=null}function we(e){return[`Customer Details`,`Delivery Address`,`Product`,`Order Method`][e-1]}function Te(){return`
   <div class="flex items-center gap-2 mb-6">
     ${[1,2,3,4].map(e=>`
       <div class="flex-1 flex items-center gap-2">
@@ -869,7 +1290,7 @@
         ${e<4?`<div class="h-0.5 flex-1 ${e<H.step?`bg-fc-green`:`bg-fc-line`}"></div>`:``}
       </div>`).join(``)}
   </div>
-  <p class="text-xs uppercase tracking-wide text-fc-green font-semibold mb-4">Step ${H.step} of 4 &middot; ${Se(H.step)}</p>`}function we(){let e=H.customer;return`
+  <p class="text-xs uppercase tracking-wide text-fc-green font-semibold mb-4">Step ${H.step} of 4 &middot; ${we(H.step)}</p>`}function Ee(){let e=H.customer;return`
   <div class="space-y-4">
     <div>
       <label class="block text-sm font-medium mb-1.5">Name</label>
@@ -883,7 +1304,7 @@
       <label class="block text-sm font-medium mb-1.5">Mobile Number</label>
       <input data-field="mobile" value="${e.mobile}" inputmode="numeric" maxlength="10" pattern="[6-9][0-9]{9}" class="w-full border border-fc-line rounded-xl px-4 py-2.5 text-sm outline-none focus:border-fc-green" />
     </div>
-  </div>`}function Te(){let e=H.address;return`
+  </div>`}function De(){let e=H.address;return`
   <div class="space-y-4">
     <div>
       <label class="block text-sm font-medium mb-1.5">Address</label>
@@ -903,13 +1324,13 @@
       <label class="block text-sm font-medium mb-1.5">Pincode</label>
       <input data-field="pincode" value="${e.pincode}" class="w-full border border-fc-line rounded-xl px-4 py-2.5 text-sm outline-none focus:border-fc-green" />
     </div>
-  </div>`}function Ee(){let e=H.product;return`
+  </div>`}function Oe(){let e=H.product;return`
   <div class="flex gap-4 mb-5">
-    ${S(e.images[0],e.name,`w-20 h-20 rounded-xl object-cover border border-fc-line shrink-0`)}
+    ${w(e.images[0],e.name,`w-20 h-20 rounded-xl object-cover border border-fc-line shrink-0`)}
     <div>
       <div class="font-display font-semibold">${e.name}</div>
       <div class="text-xs text-fc-slate/50 mt-0.5">SKU: ${e.sku}</div>
-      <div class="text-sm text-fc-slate/60 mt-1">${x(e,{size:`text-fc-slate/80 font-medium`})}</div>
+      <div class="text-sm text-fc-slate/60 mt-1">${C(e,{size:`text-fc-slate/80 font-medium`})}</div>
       <div class="text-xs mt-1 ${e.stock>0?`text-fc-green`:`text-red-600`}">${e.stock>0?`${e.stock} in stock`:`Out of stock`}</div>
     </div>
   </div>
@@ -929,9 +1350,9 @@
         ${e.specifications.map(e=>`<option value="${e.label}: ${e.value}" ${H.configuration===`${e.label}: ${e.value}`?`selected`:``}>${e.label}: ${e.value}</option>`).join(``)}
       </select>
     </div>
-  </div>`}var De=[{value:`delivery`,icon:`banknote`,title:`Cash on Delivery`,desc:`Pay in cash when your order is delivered.`},{value:`visit_company`,icon:`building-2`,title:`Visit Company`,desc:`Visit our office to complete the purchase and payment in person.`}];function Oe(){return`
+  </div>`}var ke=[{value:`delivery`,icon:`banknote`,title:`Cash on Delivery`,desc:`Pay in cash when your order is delivered.`},{value:`visit_company`,icon:`building-2`,title:`Visit Company`,desc:`Visit our office to complete the purchase and payment in person.`}];function Ae(){return`
   <div class="space-y-3">
-    ${De.map(e=>`
+    ${ke.map(e=>`
     <button type="button" data-order-method="${e.value}" class="w-full flex items-center gap-4 border-2 rounded-xl p-4 text-left transition-colors ${H.orderMethod===e.value?`border-fc-green bg-fc-greenlight/50`:`border-fc-line hover:border-fc-green/50`}">
       <div class="w-10 h-10 rounded-lg bg-white border border-fc-line flex items-center justify-center shrink-0">
         <i data-lucide="${e.icon}" class="w-5 h-5 text-fc-green"></i>
@@ -945,11 +1366,11 @@
       </div>
     </button>`).join(``)}
     <p class="text-xs text-fc-slate/55 px-1">Choose Cash on Delivery to pay when your order arrives, or Visit Company to complete the purchase in person.</p>
-  </div>`}function ke(){return H.step===4?`
+  </div>`}function je(){return H.step===4?`
     <button data-action="back" class="flex-1 border border-fc-line font-medium py-2.5 rounded-xl hover:border-fc-green">Back</button>
     <button data-action="confirm" class="flex-1 bg-fc-green text-white font-medium py-2.5 rounded-xl hover:bg-fc-greendark">Confirm Purchase</button>`:`
     ${H.step>1?`<button data-action="back" class="flex-1 border border-fc-line font-medium py-2.5 rounded-xl hover:border-fc-green">Back</button>`:`<div class="flex-1"></div>`}
-    <button data-action="next" class="flex-1 bg-fc-green text-white font-medium py-2.5 rounded-xl hover:bg-fc-greendark">Continue</button>`}function W(){let e=document.getElementById(`getcode-modal-root`);e||(e=document.createElement(`div`),e.id=`getcode-modal-root`,document.body.appendChild(e));let t=H.step===1?we():H.step===2?Te():H.step===3?Ee():Oe();e.innerHTML=`
+    <button data-action="next" class="flex-1 bg-fc-green text-white font-medium py-2.5 rounded-xl hover:bg-fc-greendark">Continue</button>`}function W(){let e=document.getElementById(`getcode-modal-root`);e||(e=document.createElement(`div`),e.id=`getcode-modal-root`,document.body.appendChild(e));let t=H.step===1?Ee():H.step===2?De():H.step===3?Oe():Ae();e.innerHTML=`
   <div class="fixed inset-0 z-[70] flex items-end sm:items-center justify-center">
     <div class="absolute inset-0 bg-black/50 modal-backdrop" data-close></div>
     <div class="modal-panel relative bg-white w-full sm:max-w-md sm:rounded-2xl rounded-t-3xl max-h-[92vh] overflow-y-auto thin-scroll">
@@ -960,22 +1381,22 @@
         </button>
       </div>
       <div class="px-6 pt-5">
-        ${Ce()}
+        ${Te()}
         ${t}
       </div>
       <div class="px-6 py-5 flex gap-3 mt-2">
-        ${ke()}
+        ${je()}
       </div>
     </div>
-  </div>`,y(),Me(e)}function Ae(e){e.querySelectorAll(`[data-field]`).forEach(e=>{let t=e.getAttribute(`data-field`);H.step===1&&(H.customer[t]=e.value),H.step===2&&(H.address[t]=e.value),H.step===3&&t===`configuration`&&(H.configuration=e.value)})}function je(){if(H.step===1){let{name:e,email:t,mobile:n}=H.customer;if(!e.trim()||t.trim()&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t)||!/^[6-9]\d{9}$/.test(n.trim()))return b(`Please fill in all customer details correctly`,{type:`error`}),!1}if(H.step===2){let{line1:e,city:t,state:n,pincode:r}=H.address;if(!e.trim()||!t.trim()||!n.trim()||!r.trim())return b(`Please complete the delivery address`,{type:`error`}),!1}return!0}function Me(e){e.querySelectorAll(`[data-close]`).forEach(e=>e.addEventListener(`click`,U));let t=e.querySelector(`[data-field="mobile"]`);t?.addEventListener(`input`,()=>{t.value=t.value.replace(/\D/g,``).slice(0,10),H.customer.mobile=t.value}),e.querySelectorAll(`[data-order-method]`).forEach(e=>{e.addEventListener(`click`,()=>{H.orderMethod=e.getAttribute(`data-order-method`),W()})}),e.querySelectorAll(`[data-qty]`).forEach(t=>{t.addEventListener(`click`,()=>{let n=t.getAttribute(`data-qty`),r=H.product.stock||0,i=H.quantity+(n===`inc`?1:-1);if(n===`inc`&&i>r){b(`Only ${r} in stock`,{type:`error`});return}H.quantity=Math.max(1,Math.min(i,r)),e.querySelector(`#qty-value`).textContent=H.quantity})}),e.querySelector(`[data-action="back"]`)?.addEventListener(`click`,()=>{H.step=Math.max(1,H.step-1),W()}),e.querySelector(`[data-action="next"]`)?.addEventListener(`click`,()=>{Ae(e.querySelector(`.modal-panel`)),je()&&(H.step=Math.min(4,H.step+1),W())}),e.querySelector(`[data-action="confirm"]`)?.addEventListener(`click`,async e=>{let t=e.currentTarget;if(t.disabled)return;if(H.quantity<1){b(`Please select a valid quantity`,{type:`error`});return}if(H.quantity>(H.product.stock||0)){b(`Requested quantity exceeds available stock`,{type:`error`});return}let n=t.textContent;t.disabled=!0,t.textContent=`Placing order…`,p.saveAddress(H.address);try{await m.clear(),await m.add(H.product.id,H.quantity);let e=await h.create({customer:H.customer,address:H.address,configuration:H.configuration,orderMethod:H.orderMethod});U(),b(`Purchase order created!`),window.location.hash=`#/success/${e.order_number||e.id}`}catch(e){b(e.message||`Could not create order`,{type:`error`}),t.disabled=!1,t.textContent=n}})}var G=[],K=!1,q=!1;function J(e){let t=encodeURIComponent(e||`Hi Farm Craft, I have a question about your products.`);return`https://wa.me/${n.whatsapp}?text=${t}`}var Ne=[{label:`Our products`,query:`What products do you sell?`},{label:`Track my order`,query:`How do I track my order?`},{label:`Delivery info`,query:`How does delivery work?`},{label:`Payment options`,query:`What payment methods do you accept?`},{label:`Returns & support`,query:`What is your return policy?`}],Pe=[{keywords:[`product`,`catalog`,`machine`,`machinery`,`what do you sell`,`range`,`sell`,`grain`],reply:`Farm Craft's range covers the full grain handling chain: Grain Transferring pipes &amp; motor heads, Grain Collecting machines, Grain Bagging attachments, Grain Handling systems, Agricultural Machinery and Pipes &amp; Accessories. Open the <a href="#/shop" class="text-fc-green underline font-medium">Products</a> page to browse by category, or the <a href="#/services" class="text-fc-green underline font-medium">Services</a> page to see how we help you configure the right setup.`},{keywords:[`order`,`purchase code`,`my order`,`track`,`status`,`where is my`],reply:`You can see every order and its purchase code under <a href="#/orders" class="text-fc-green underline font-medium">My Orders</a> (login required). Each order shows its status, quantity, payment method and a downloadable invoice.`},{keywords:[`deliver`,`delivery`,`shipping`,`how long`,`dispatch`,`arrive`],reply:`After you get a purchase code, our team confirms delivery details directly with you based on your address and the product's configuration. You can track the order status any time under My Orders.`},{keywords:[`pay`,`payment`,`cod`,`cash`,`online payment`,`upi`,`card`,`visit`],reply:`You can choose Cash on Delivery (pay in cash when your order is delivered) or Visit Company (complete the purchase in person at our office) in the last step of the "Get a Code" flow. We don't currently support online/card payments.`},{keywords:[`return`,`refund`,`warranty`,`replace`,`exchange`,`cancel`],reply:`For returns, replacements or warranty questions, please share your purchase code or order ID with our team on WhatsApp or by phone — we'll sort out next steps directly with you.`},{keywords:[`wishlist`,`favorite`,`favourite`,`heart`,`save product`,`saved`],reply:`Tap the heart icon on any product to save it — it'll show up on your <a href="#/wishlist" class="text-fc-green underline font-medium">Wishlist</a> page and stays saved as you browse.`},{keywords:[`invoice`,`bill`,`receipt`,`download invoice`],reply:`Every order has a downloadable invoice with our logo, your order details and totals — find the "Download Invoice" button on the order success page or any order's detail page under My Orders.`},{keywords:[`service`,`installation`,`setup`,`configure`,`configuration`,`maintenance`,`support`,`after sales`],reply:`Our <a href="#/services" class="text-fc-green underline font-medium">Services</a> page covers installation guidance, custom machinery configuration and after-sales support — take a look, or message us on WhatsApp with your requirement.`},{keywords:[`price`,`cost`,`how much`,`quote`],reply:`Pricing depends on configuration (motor size, pipe length, etc.), so many listings show "Contact for Price." Start the "Get a Code" flow on a product, or message us on WhatsApp for a quick quote.`},{keywords:[`contact`,`call`,`phone`,`email`,`human`,`agent`,`talk to someone`,`representative`],reply:`You can reach Farm Craft at ${n.phone} or ${n.email}, or use the WhatsApp button below for the fastest response. Our <a href="#/contact" class="text-fc-green underline font-medium">Contact</a> page also has an enquiry form.`},{keywords:[`login`,`log in`,`sign in`,`account`,`demo credential`],reply:`Use the demo credentials shown on the <a href="#/login" class="text-fc-green underline font-medium">Login</a> page, or tap "Login as Customer" to jump straight in — no real account needed for this demo storefront.`},{keywords:[`hi`,`hello`,`hey`,`good morning`,`good evening`],reply:`Hello! I'm the Farm Craft Copilot. I can help with products, orders, delivery, payments, returns and more — what would you like to know?`},{keywords:[`thank`,`thanks`,`thank you`],reply:`You're welcome! Anything else I can help with?`}],Fe=`I don't have a ready answer for that yet, but our team can help directly — tap "Chat on WhatsApp" below, or visit the <a href="#/contact" class="text-fc-green underline font-medium">Contact</a> page.`;function Ie(e){let t=e.toLowerCase();for(let e of Pe)if(e.keywords.some(e=>t.includes(e)))return e.reply;return Fe}function Le(e){let t=e.role===`user`;return`
+  </div>`,x(),Pe(e)}function Me(e){e.querySelectorAll(`[data-field]`).forEach(e=>{let t=e.getAttribute(`data-field`);H.step===1&&(H.customer[t]=e.value),H.step===2&&(H.address[t]=e.value),H.step===3&&t===`configuration`&&(H.configuration=e.value)})}function Ne(){if(H.step===1){let{name:e,email:t,mobile:n}=H.customer;if(!e.trim()||t.trim()&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t)||!/^[6-9]\d{9}$/.test(n.trim()))return S(`Please fill in all customer details correctly`,{type:`error`}),!1}if(H.step===2){let{line1:e,city:t,state:n,pincode:r}=H.address;if(!e.trim()||!t.trim()||!n.trim()||!r.trim())return S(`Please complete the delivery address`,{type:`error`}),!1}return!0}function Pe(e){e.querySelectorAll(`[data-close]`).forEach(e=>e.addEventListener(`click`,U));let t=e.querySelector(`[data-field="mobile"]`);t?.addEventListener(`input`,()=>{t.value=t.value.replace(/\D/g,``).slice(0,10),H.customer.mobile=t.value}),e.querySelectorAll(`[data-order-method]`).forEach(e=>{e.addEventListener(`click`,()=>{H.orderMethod=e.getAttribute(`data-order-method`),W()})}),e.querySelectorAll(`[data-qty]`).forEach(t=>{t.addEventListener(`click`,()=>{let n=t.getAttribute(`data-qty`),r=H.product.stock||0,i=H.quantity+(n===`inc`?1:-1);if(n===`inc`&&i>r){S(`Only ${r} in stock`,{type:`error`});return}H.quantity=Math.max(1,Math.min(i,r)),e.querySelector(`#qty-value`).textContent=H.quantity})}),e.querySelector(`[data-action="back"]`)?.addEventListener(`click`,()=>{H.step=Math.max(1,H.step-1),W()}),e.querySelector(`[data-action="next"]`)?.addEventListener(`click`,()=>{Me(e.querySelector(`.modal-panel`)),Ne()&&(H.step=Math.min(4,H.step+1),W())}),e.querySelector(`[data-action="confirm"]`)?.addEventListener(`click`,async e=>{let t=e.currentTarget;if(t.disabled)return;if(H.quantity<1){S(`Please select a valid quantity`,{type:`error`});return}if(H.quantity>(H.product.stock||0)){S(`Requested quantity exceeds available stock`,{type:`error`});return}let n=t.textContent;t.disabled=!0,t.textContent=`Placing order…`,h.saveAddress(H.address);try{await g.clear(),await g.add(H.product.id,H.quantity);let e=await _.create({customer:H.customer,address:H.address,configuration:H.configuration,orderMethod:H.orderMethod});U(),S(`Purchase order created!`),window.location.hash=`#/success/${e.order_number||e.id}`}catch(e){S(e.message||`Could not create order`,{type:`error`}),t.disabled=!1,t.textContent=n}})}var G=[],K=!1,q=!1;function J(e){let t=encodeURIComponent(e||`Hi Farm Craft, I have a question about your products.`);return`https://wa.me/${n.whatsapp}?text=${t}`}var Fe=[{label:`Our products`,query:`What products do you sell?`},{label:`Track my order`,query:`How do I track my order?`},{label:`Delivery info`,query:`How does delivery work?`},{label:`Payment options`,query:`What payment methods do you accept?`},{label:`Returns & support`,query:`What is your return policy?`}],Ie=[{keywords:[`product`,`catalog`,`machine`,`machinery`,`what do you sell`,`range`,`sell`,`grain`],reply:`Farm Craft's range covers the full grain handling chain: Grain Transferring pipes &amp; motor heads, Grain Collecting machines, Grain Bagging attachments, Grain Handling systems, Agricultural Machinery and Pipes &amp; Accessories. Open the <a href="#/shop" class="text-fc-green underline font-medium">Products</a> page to browse by category, or the <a href="#/services" class="text-fc-green underline font-medium">Services</a> page to see how we help you configure the right setup.`},{keywords:[`order`,`purchase code`,`my order`,`track`,`status`,`where is my`],reply:`You can see every order and its purchase code under <a href="#/orders" class="text-fc-green underline font-medium">My Orders</a> (login required). Each order shows its status, quantity, payment method and a downloadable invoice.`},{keywords:[`deliver`,`delivery`,`shipping`,`how long`,`dispatch`,`arrive`],reply:`After you get a purchase code, our team confirms delivery details directly with you based on your address and the product's configuration. You can track the order status any time under My Orders.`},{keywords:[`pay`,`payment`,`cod`,`cash`,`online payment`,`upi`,`card`,`visit`],reply:`You can choose Cash on Delivery (pay in cash when your order is delivered) or Visit Company (complete the purchase in person at our office) in the last step of the "Get a Code" flow. We don't currently support online/card payments.`},{keywords:[`return`,`refund`,`warranty`,`replace`,`exchange`,`cancel`],reply:`For returns, replacements or warranty questions, please share your purchase code or order ID with our team on WhatsApp or by phone — we'll sort out next steps directly with you.`},{keywords:[`wishlist`,`favorite`,`favourite`,`heart`,`save product`,`saved`],reply:`Tap the heart icon on any product to save it — it'll show up on your <a href="#/wishlist" class="text-fc-green underline font-medium">Wishlist</a> page and stays saved as you browse.`},{keywords:[`invoice`,`bill`,`receipt`,`download invoice`],reply:`Every order has a downloadable invoice with our logo, your order details and totals — find the "Download Invoice" button on the order success page or any order's detail page under My Orders.`},{keywords:[`service`,`installation`,`setup`,`configure`,`configuration`,`maintenance`,`support`,`after sales`],reply:`Our <a href="#/services" class="text-fc-green underline font-medium">Services</a> page covers installation guidance, custom machinery configuration and after-sales support — take a look, or message us on WhatsApp with your requirement.`},{keywords:[`price`,`cost`,`how much`,`quote`],reply:`Pricing depends on configuration (motor size, pipe length, etc.), so many listings show "Contact for Price." Start the "Get a Code" flow on a product, or message us on WhatsApp for a quick quote.`},{keywords:[`contact`,`call`,`phone`,`email`,`human`,`agent`,`talk to someone`,`representative`],reply:`You can reach Farm Craft at ${n.phone} or ${n.email}, or use the WhatsApp button below for the fastest response. Our <a href="#/contact" class="text-fc-green underline font-medium">Contact</a> page also has an enquiry form.`},{keywords:[`login`,`log in`,`sign in`,`account`,`demo credential`],reply:`Use the demo credentials shown on the <a href="#/login" class="text-fc-green underline font-medium">Login</a> page, or tap "Login as Customer" to jump straight in — no real account needed for this demo storefront.`},{keywords:[`hi`,`hello`,`hey`,`good morning`,`good evening`],reply:`Hello! I'm the Farm Craft Copilot. I can help with products, orders, delivery, payments, returns and more — what would you like to know?`},{keywords:[`thank`,`thanks`,`thank you`],reply:`You're welcome! Anything else I can help with?`}],Le=`I don't have a ready answer for that yet, but our team can help directly — tap "Chat on WhatsApp" below, or visit the <a href="#/contact" class="text-fc-green underline font-medium">Contact</a> page.`;function Re(e){let t=e.toLowerCase();for(let e of Ie)if(e.keywords.some(e=>t.includes(e)))return e.reply;return Le}function ze(e){let t=e.role===`user`;return`
   <div class="flex ${t?`justify-end`:`justify-start`}">
     <div class="max-w-[82%] px-3.5 py-2.5 rounded-2xl text-sm leading-relaxed ${t?`bg-fc-green text-white rounded-br-md`:`bg-fc-offwhite text-fc-charcoal rounded-bl-md border border-fc-line`}">${e.text}</div>
-  </div>`}function Re(){return`
+  </div>`}function Be(){return`
   <div class="flex justify-start" id="help-typing">
     <div class="bg-fc-offwhite border border-fc-line rounded-2xl rounded-bl-md px-4 py-3 flex items-center gap-1.5">
       <span class="help-dot"></span><span class="help-dot"></span><span class="help-dot"></span>
     </div>
-  </div>`}function Y(){return`
+  </div>`}function Ve(){return`
   <div id="help-panel" class="fixed z-[90] bg-white shadow-soft border border-fc-line flex flex-col
     inset-0 sm:inset-auto sm:bottom-24 sm:right-6 sm:w-[380px] sm:h-[560px] sm:rounded-3xl help-panel-enter overflow-hidden">
     <div class="shrink-0 bg-fc-charcoal text-white px-5 py-4 flex items-center justify-between">
@@ -994,13 +1415,13 @@
     </div>
 
     <div id="help-messages" class="flex-1 overflow-y-auto thin-scroll px-4 py-4 space-y-3 bg-fc-paper">
-      ${G.map(Le).join(``)}
-      ${q?Re():``}
+      ${G.map(ze).join(``)}
+      ${q?Be():``}
     </div>
 
     <div class="shrink-0 border-t border-fc-line px-4 py-3 bg-white">
       <div class="flex gap-2 overflow-x-auto pb-3 -mx-1 px-1 thin-scroll">
-        ${Ne.map(e=>`<button data-quick="${e.query.replace(/"/g,`&quot;`)}" class="shrink-0 text-xs font-medium border border-fc-line rounded-full px-3 py-1.5 hover:border-fc-green hover:text-fc-green transition-colors whitespace-nowrap">${e.label}</button>`).join(``)}
+        ${Fe.map(e=>`<button data-quick="${e.query.replace(/"/g,`&quot;`)}" class="shrink-0 text-xs font-medium border border-fc-line rounded-full px-3 py-1.5 hover:border-fc-green hover:text-fc-green transition-colors whitespace-nowrap">${e.label}</button>`).join(``)}
       </div>
       <form id="help-form" class="flex items-center gap-2 mb-2.5">
         <input id="help-input" type="text" placeholder="Ask about products, orders, delivery…"
@@ -1014,12 +1435,12 @@
         <i data-lucide="message-circle" class="w-4 h-4"></i> Chat on WhatsApp
       </a>
     </div>
-  </div>`}function ze(){return`
+  </div>`}function He(){return`
   <a id="help-fab" href="${J()}" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"
     class="fixed z-[90] right-5 bottom-24 lg:bottom-6 w-14 h-14 rounded-full text-white shadow-soft flex items-center justify-center hover:scale-105 transition-transform help-fab-pulse"
     style="background:#25D366;">
     <i data-lucide="message-circle" class="w-7 h-7"></i>
-  </a>`}function Be(){window.lucide&&window.lucide.createIcons()}function Ve(){let e=document.getElementById(`help-messages`);e&&(e.scrollTop=e.scrollHeight)}function X(){let e=document.getElementById(`help-widget-root`);e&&(e.innerHTML=`${K?Y():``}${ze()}`,Be(),Ue(e),K&&Ve())}function Z(e){let t=e.trim();if(!t)return;G.push({role:`user`,text:He(t)}),q=!0,X();let n=500+Math.random()*400;setTimeout(()=>{q=!1,G.push({role:`assistant`,text:Ie(t)}),X()},n)}function He(e){let t=document.createElement(`div`);return t.textContent=e,t.innerHTML}function Ue(e){e.querySelector(`#help-fab`)?.addEventListener(`click`,()=>{K=!0,X()}),e.querySelector(`#help-close`)?.addEventListener(`click`,()=>{K=!1,X()}),e.querySelectorAll(`[data-quick]`).forEach(e=>{e.addEventListener(`click`,()=>Z(e.getAttribute(`data-quick`)))});let t=e.querySelector(`#help-form`),n=e.querySelector(`#help-input`);t?.addEventListener(`submit`,e=>{e.preventDefault(),n.value.trim()&&(Z(n.value),n.value=``)}),e.querySelectorAll(`#help-messages a[href^="#/"]`).forEach(e=>{e.addEventListener(`click`,()=>{K=!1,X()})})}function We(){if(document.getElementById(`help-widget-root`))return;let e=document.createElement(`div`);e.id=`help-widget-root`,document.body.appendChild(e),G=[{role:`assistant`,text:`Hi! I'm the Farm Craft Copilot 👋 Ask me about products, orders, delivery, payments or returns — or use the quick options below.`}],X()}var Q=document.getElementById(`app`);function Ge(){let[e,t]=(window.location.hash.replace(/^#/,``)||`/`).split(`?`),n=Object.fromEntries(new URLSearchParams(t||``));return{path:e.replace(/\/$/,``)||`/`,params:n}}var Ke=new Set([`/login`]);function qe(e,{chrome:t=!0}={}){return t?`${T()}<main class="min-h-[60vh]">${e}</main>${D()}${E()}`:e}async function $({resetScroll:e=!0}={}){let{path:t,params:n}=Ge();if((t===`/shop`||t.startsWith(`/product/`))&&(await f.load(),f.error&&console.error(`Product API unavailable:`,f.error)),t===`/orders`||t.startsWith(`/order/`)||t.startsWith(`/success/`))try{await h.load()}catch(e){console.error(`Order API unavailable`,e)}e&&window.scrollTo({top:0,behavior:`instant`in document.documentElement.style?`instant`:`auto`});let r=``,i=null,a=!Ke.has(t);if(t===`/login`)r=ie(),i=()=>ae($);else if(t===`/`)r=oe(),i=()=>k();else if(t===`/shop`)r=se(n),i=()=>ce(n);else if(t.startsWith(`/product/`))r=le(t.replace(`/product/`,``)),i=()=>ue();else if(t===`/cart`)r=await P(),i=()=>F();else if(t===`/wishlist`)r=de();else if(t===`/orders`)r=L(),i=()=>V();else if(t.startsWith(`/order/`))r=R(t.replace(`/order/`,``)),i=()=>V();else if(t.startsWith(`/success/`)){let e=t.replace(`/success/`,``),n=h.byId(e);r=n?B(n):`<div class="max-w-xl mx-auto px-4 py-24 text-center">Order not found.</div>`,i=()=>V()}else t===`/profile`?(r=pe(),i=()=>me()):t===`/about`?r=he():t===`/services`?(r=ge(),i=()=>k()):t===`/contact`?(r=ve(),i=()=>ye()):r=`<div class="max-w-xl mx-auto px-4 py-32 text-center">
+  </a>`}function Ue(){window.lucide&&window.lucide.createIcons()}function We(){let e=document.getElementById(`help-messages`);e&&(e.scrollTop=e.scrollHeight)}function Y(){let e=document.getElementById(`help-widget-root`);e&&(e.innerHTML=`${K?Ve():``}${He()}`,Ue(),Ke(e),K&&We())}function X(e){let t=e.trim();if(!t)return;G.push({role:`user`,text:Ge(t)}),q=!0,Y();let n=500+Math.random()*400;setTimeout(()=>{q=!1,G.push({role:`assistant`,text:Re(t)}),Y()},n)}function Ge(e){let t=document.createElement(`div`);return t.textContent=e,t.innerHTML}function Ke(e){e.querySelector(`#help-fab`)?.addEventListener(`click`,()=>{K=!0,Y()}),e.querySelector(`#help-close`)?.addEventListener(`click`,()=>{K=!1,Y()}),e.querySelectorAll(`[data-quick]`).forEach(e=>{e.addEventListener(`click`,()=>X(e.getAttribute(`data-quick`)))});let t=e.querySelector(`#help-form`),n=e.querySelector(`#help-input`);t?.addEventListener(`submit`,e=>{e.preventDefault(),n.value.trim()&&(X(n.value),n.value=``)}),e.querySelectorAll(`#help-messages a[href^="#/"]`).forEach(e=>{e.addEventListener(`click`,()=>{K=!1,Y()})})}function Z(){if(document.getElementById(`help-widget-root`))return;let e=document.createElement(`div`);e.id=`help-widget-root`,document.body.appendChild(e),G=[{role:`assistant`,text:`Hi! I'm the Farm Craft Copilot 👋 Ask me about products, orders, delivery, payments or returns — or use the quick options below.`}],Y()}var Q=document.getElementById(`app`);function qe(){let[e,t]=(window.location.hash.replace(/^#/,``)||`/`).split(`?`),n=Object.fromEntries(new URLSearchParams(t||``));return{path:e.replace(/\/$/,``)||`/`,params:n}}var Je=new Set([`/login`]);function Ye(e,{chrome:t=!0}={}){return t?`${D()}<main class="min-h-[60vh]">${e}</main>${ie()}${re()}`:e}async function $({resetScroll:e=!0}={}){let{path:t,params:n}=qe();if((t===`/shop`||t.startsWith(`/product/`))&&(await m.load(),m.error&&console.error(`Product API unavailable:`,m.error)),t===`/orders`||t.startsWith(`/order/`)||t.startsWith(`/success/`))try{await _.load()}catch(e){console.error(`Order API unavailable`,e)}e&&window.scrollTo({top:0,behavior:`instant`in document.documentElement.style?`instant`:`auto`});let r=``,i=null,a=!Je.has(t);if(t===`/login`)r=oe(),i=()=>se($);else if(t===`/`)r=ce(),i=()=>k();else if(t===`/shop`)r=le(n),i=()=>ue(n);else if(t.startsWith(`/product/`))r=de(t.replace(`/product/`,``)),i=()=>fe();else if(t===`/cart`)r=await P(),i=()=>F();else if(t===`/wishlist`)r=pe();else if(t===`/orders`)r=L(),i=()=>V();else if(t.startsWith(`/order/`))r=R(t.replace(`/order/`,``)),i=()=>V();else if(t.startsWith(`/success/`)){let e=t.replace(`/success/`,``),n=_.byId(e);r=n?B(n):`<div class="max-w-xl mx-auto px-4 py-24 text-center">Order not found.</div>`,i=()=>V()}else t===`/profile`?(r=he(),i=()=>ge()):t===`/about`?r=_e():t===`/services`?(r=ve(),i=()=>k()):t===`/contact`?(r=be(),i=()=>xe()):r=`<div class="max-w-xl mx-auto px-4 py-32 text-center">
       <h1 class="font-display text-2xl font-semibold mb-2">Page not found</h1>
       <a href="#/" class="text-fc-green font-medium">Back to Home</a>
-    </div>`;Q.innerHTML=qe(r,{chrome:a}),y(),a&&re($),i&&i(),Je(),u.isLoggedIn()&&m.get().then(e=>{let t=document.getElementById(`cart-count-badge`);if(t){let n=(e?.items||[]).reduce((e,t)=>e+Number(t.quantity||0),0);t.textContent=String(n),t.classList.toggle(`hidden`,n===0)}}).catch(()=>{})}function Je(){Q.querySelectorAll(`[data-cart-add]`).forEach(e=>{e.addEventListener(`click`,async t=>{if(t.preventDefault(),t.stopPropagation(),e.getAttribute(`data-cart-add`),!u.isLoggedIn()){b(`Please log in to add items to your cart`,{type:`error`}),window.location.hash=`#/login`;return}try{await m.add(e.getAttribute(`data-cart-add`),1),b(`Added to cart`)}catch(e){e.status===401?(b(`Your session has expired. Please log in again.`,{type:`error`}),window.location.hash=`#/login`):b(e.message||`Could not add to cart`,{type:`error`})}})}),Q.querySelectorAll(`[data-getcode]`).forEach(e=>{e.addEventListener(`click`,t=>{t.preventDefault(),xe(e.getAttribute(`data-getcode`))})}),Q.querySelectorAll(`[data-wishlist]`).forEach(e=>{e.addEventListener(`click`,t=>{t.preventDefault(),t.stopPropagation();let n=e.getAttribute(`data-wishlist`);b(p.toggleWishlist(n).includes(n)?`Added to wishlist`:`Removed from wishlist`),$({resetScroll:!1})})})}window.addEventListener(`hashchange`,()=>$()),window.addEventListener(`DOMContentLoaded`,()=>$()),$(),We();
+    </div>`;Q.innerHTML=Ye(r,{chrome:a}),x(),a&&ae($),i&&i(),Xe(),f.isLoggedIn()&&g.get().then(e=>{let t=document.getElementById(`cart-count-badge`);if(t){let n=(e?.items||[]).reduce((e,t)=>e+Number(t.quantity||0),0);t.textContent=String(n),t.classList.toggle(`hidden`,n===0)}}).catch(()=>{})}function Xe(){Q.querySelectorAll(`[data-cart-add]`).forEach(e=>{e.addEventListener(`click`,async t=>{if(t.preventDefault(),t.stopPropagation(),e.getAttribute(`data-cart-add`),!f.isLoggedIn()){S(`Please log in to add items to your cart`,{type:`error`}),window.location.hash=`#/login`;return}try{await g.add(e.getAttribute(`data-cart-add`),1),S(`Added to cart`)}catch(e){e.status===401?(S(`Your session has expired. Please log in again.`,{type:`error`}),window.location.hash=`#/login`):S(e.message||`Could not add to cart`,{type:`error`})}})}),Q.querySelectorAll(`[data-getcode]`).forEach(e=>{e.addEventListener(`click`,t=>{t.preventDefault(),Ce(e.getAttribute(`data-getcode`))})}),Q.querySelectorAll(`[data-wishlist]`).forEach(e=>{e.addEventListener(`click`,t=>{t.preventDefault(),t.stopPropagation();let n=e.getAttribute(`data-wishlist`);S(h.toggleWishlist(n).includes(n)?`Added to wishlist`:`Removed from wishlist`),$({resetScroll:!1})})})}window.addEventListener(`hashchange`,()=>$()),window.addEventListener(`DOMContentLoaded`,()=>$()),$(),Z();
