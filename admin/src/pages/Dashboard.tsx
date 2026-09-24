@@ -38,7 +38,7 @@ export default function Dashboard() {
   useEffect(() => {
     loadOrders().then(setOrders).catch(() => setOrders([]));
     setOffers(loadOffers());
-    apiRequest<any[]>("/admin/customers").then(setCustomers).catch(() => setCustomers([]));
+    apiRequest<any[]>("/api/admin/customers").then(setCustomers).catch(() => setCustomers([]));
     fetchProducts()
       .then(setProducts)
       .catch(() => setProducts([]));

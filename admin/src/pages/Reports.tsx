@@ -36,7 +36,7 @@ export default function Reports() {
 
   useEffect(() => {
     loadOrders().then(setOrders).catch(() => setOrders([]));
-    apiRequest<any[]>("/admin/customers").then(setCustomers).catch(() => setCustomers([]));
+    apiRequest<any[]>("/api/admin/customers").then(setCustomers).catch(() => setCustomers([]));
     fetchProducts()
       .then(setProducts)
       .catch(() => setProducts([]));
