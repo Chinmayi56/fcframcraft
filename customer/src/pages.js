@@ -872,10 +872,12 @@ export function contactPage() {
           </div>
           <p class="text-xs text-white/40 mt-4 pt-4 border-t border-white/10">${COMPANY.addressNote}</p>
         </div>
+        <!--
         <div class="border border-fc-line rounded-2xl p-6">
           <div class="text-xs text-fc-slate/55 mb-1">GSTIN</div>
           <div class="font-mono font-medium">${COMPANY.gstin}</div>
         </div>
+        -->
       </div>
     </div>
   </div>`;

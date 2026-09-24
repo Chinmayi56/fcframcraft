@@ -1,18 +1,45 @@
-import { header, footer, mobileTabBar, icons, initRevealObserver, attachHeaderBehaviour, skeletonCard, toast } from './components.js';
 import {
-  loginPage, attachLoginPage,
-  cartPage, attachCartPage,
+  header,
+  footer,
+  mobileTabBar,
+  icons,
+  initRevealObserver,
+  attachHeaderBehaviour,
+  skeletonCard,
+  toast
+} from './components.js';
+
+import {
+  loginPage,
+  attachLoginPage,
+  cartPage,
+  attachCartPage,
   homePage,
-  shopPage, attachShopPage,
-  productDetailPage, attachProductDetailPage,
+  shopPage,
+  attachShopPage,
+  productDetailPage,
+  attachProductDetailPage,
   wishlistPage,
-  ordersPage, orderDetailPage, successOrderCard, attachOrderCardPage,
-  profilePage, attachProfilePage,
+  ordersPage,
+  orderDetailPage,
+  successOrderCard,
+  attachOrderCardPage,
+  profilePage,
+  attachProfilePage,
   aboutPage,
   servicesPage,
-  contactPage, attachContactPage,
+  contactPage,
+  attachContactPage,
 } from './pages.js';
-import { authService, orderService, customerService, productService, cartService } from './services.js';
+
+import {
+  authService,
+  orderService,
+  customerService,
+  productService,
+  cartService
+} from './services.js';
+
 import { openGetCodeModal } from './getCodeModal.js';
 import { mountHelpWidget } from './helpWidget.js';
 
@@ -21,93 +48,176 @@ const app = document.getElementById('app');
 function parseHash() {
   const raw = window.location.hash.replace(/^#/, '') || '/';
   const [path, queryString] = raw.split('?');
-  const params = Object.fromEntries(new URLSearchParams(queryString || ''));
-  return { path: path.replace(/\/$/, '') || '/', params };
+  const params = Object.fromEntries(
+    new URLSearchParams(queryString || '')
+  );
+
+  return {
+    path: path.replace(/\/$/, '') || '/',
+    params
+  };
 }
 
 const NO_CHROME = new Set(['/login']);
 
 function layout(contentHtml, { chrome = true } = {}) {
   if (!chrome) return contentHtml;
+
   return `${header()}<main class="min-h-[60vh]">${contentHtml}</main>${footer()}${mobileTabBar()}`;
 }
 
 async function render({ resetScroll = true } = {}) {
   const { path, params } = parseHash();
+
+  // Always scroll to the top when navigating to a new page.
+  // This runs BEFORE any asynchronous API loading so the new page
+  // does not inherit the previous page's scroll position.
+  if (resetScroll) {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'auto'
+    });
+  }
+
   // Lazy-load products only on routes that actually need the catalog.
   // The home page can render immediately without waiting for the API.
-  const needsProducts = path === '/shop' || path.startsWith('/product/');
+  const needsProducts =
+    path === '/shop' || path.startsWith('/product/');
+
   if (needsProducts) {
     await productService.load();
-    if (productService.error) console.error('Product API unavailable:', productService.error);
+
+    if (productService.error) {
+      console.error(
+        'Product API unavailable:',
+        productService.error
+      );
+    }
   }
-  if (path === '/orders' || path.startsWith('/order/') || path.startsWith('/success/')) { try { await orderService.load(); } catch (e) { console.error('Order API unavailable', e); } }
-  if (resetScroll) {
-    window.scrollTo({ top: 0, behavior: 'instant' in document.documentElement.style ? 'instant' : 'auto' });
+
+  // Load orders only on order-related pages.
+  if (
+    path === '/orders' ||
+    path.startsWith('/order/') ||
+    path.startsWith('/success/')
+  ) {
+    try {
+      await orderService.load();
+    } catch (e) {
+      console.error('Order API unavailable', e);
+    }
   }
 
   let content = '';
   let after = null;
+
   const showChrome = !NO_CHROME.has(path);
 
   if (path === '/login') {
     content = loginPage();
     after = () => attachLoginPage(render);
-  } else if (path === '/' ) {
+
+  } else if (path === '/') {
     content = homePage();
     after = () => initRevealObserver();
+
   } else if (path === '/shop') {
     content = shopPage(params);
     after = () => attachShopPage(params);
+
   } else if (path.startsWith('/product/')) {
     const slug = path.replace('/product/', '');
     content = productDetailPage(slug);
     after = () => attachProductDetailPage();
+
   } else if (path === '/cart') {
     content = await cartPage();
     after = () => attachCartPage();
+
   } else if (path === '/wishlist') {
     content = wishlistPage();
+
   } else if (path === '/orders') {
     content = ordersPage();
     after = () => attachOrderCardPage();
+
   } else if (path.startsWith('/order/')) {
     const id = path.replace('/order/', '');
     content = orderDetailPage(id);
     after = () => attachOrderCardPage();
+
   } else if (path.startsWith('/success/')) {
     const id = path.replace('/success/', '');
     const order = orderService.byId(id);
-    content = order ? successOrderCard(order) : `<div class="max-w-xl mx-auto px-4 py-24 text-center">Order not found.</div>`;
+
+    content = order
+      ? successOrderCard(order)
+      : `<div class="max-w-xl mx-auto px-4 py-24 text-center">
+          Order not found.
+        </div>`;
+
     after = () => attachOrderCardPage();
+
   } else if (path === '/profile') {
     content = profilePage();
     after = () => attachProfilePage();
+
   } else if (path === '/about') {
     content = aboutPage();
+
   } else if (path === '/services') {
     content = servicesPage();
     after = () => initRevealObserver();
+
   } else if (path === '/contact') {
     content = contactPage();
     after = () => attachContactPage();
+
   } else {
     content = `<div class="max-w-xl mx-auto px-4 py-32 text-center">
-      <h1 class="font-display text-2xl font-semibold mb-2">Page not found</h1>
-      <a href="#/" class="text-fc-green font-medium">Back to Home</a>
+      <h1 class="font-display text-2xl font-semibold mb-2">
+        Page not found
+      </h1>
+      <a href="#/" class="text-fc-green font-medium">
+        Back to Home
+      </a>
     </div>`;
   }
 
-  app.innerHTML = layout(content, { chrome: showChrome });
+  app.innerHTML = layout(content, {
+    chrome: showChrome
+  });
+
   icons();
-  if (showChrome) attachHeaderBehaviour(render);
-  if (after) after();
+
+  if (showChrome) {
+    attachHeaderBehaviour(render);
+  }
+
+  if (after) {
+    after();
+  }
+
   bindGlobalDelegates();
+
   if (authService.isLoggedIn()) {
-    cartService.get().then(cart => {
-      const badge = document.getElementById('cart-count-badge');
-      if (badge) { const count = (cart?.items || []).reduce((n, item) => n + Number(item.quantity || 0), 0); badge.textContent = String(count); badge.classList.toggle('hidden', count === 0); }
-    }).catch(() => {});
+    cartService
+      .get()
+      .then(cart => {
+        const badge = document.getElementById('cart-count-badge');
+
+        if (badge) {
+          const count = (cart?.items || []).reduce(
+            (n, item) => n + Number(item.quantity || 0),
+            0
+          );
+
+          badge.textContent = String(count);
+          badge.classList.toggle('hidden', count === 0);
+        }
+      })
+      .catch(() => {});
   }
 }
 
@@ -116,50 +226,96 @@ async function render({ resetScroll = true } = {}) {
 function bindGlobalDelegates() {
   app.querySelectorAll('[data-cart-add]').forEach(btn => {
     btn.addEventListener('click', async (e) => {
-      e.preventDefault(); e.stopPropagation();
-      // Cart requires a signed-in customer on the backend — check locally
-      // first so the user lands on Login with a clear reason instead of
-      // hitting a raw 401 from the API.
+      e.preventDefault();
+      e.stopPropagation();
+
+      // Cart requires a signed-in customer on the backend.
+      // Check locally first so the user lands on Login with a clear
+      // reason instead of hitting a raw 401 from the API.
       const productId = btn.getAttribute('data-cart-add');
+
       if (!authService.isLoggedIn()) {
-        toast('Please log in to add items to your cart', { type: 'error' });
+        toast('Please log in to add items to your cart', {
+          type: 'error'
+        });
+
         window.location.hash = '#/login';
         return;
       }
+
       try {
-        await cartService.add(btn.getAttribute('data-cart-add'), 1);
+        await cartService.add(
+          btn.getAttribute('data-cart-add'),
+          1
+        );
+
         toast('Added to cart');
+
       } catch (err) {
         if (err.status === 401) {
-          toast('Your session has expired. Please log in again.', { type: 'error' });
+          toast(
+            'Your session has expired. Please log in again.',
+            { type: 'error' }
+          );
+
           window.location.hash = '#/login';
+
         } else {
-          toast(err.message || 'Could not add to cart', { type: 'error' });
+          toast(
+            err.message || 'Could not add to cart',
+            { type: 'error' }
+          );
         }
       }
     });
   });
+
   app.querySelectorAll('[data-getcode]').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      openGetCodeModal(btn.getAttribute('data-getcode'));
+
+      openGetCodeModal(
+        btn.getAttribute('data-getcode')
+      );
     });
   });
+
   app.querySelectorAll('[data-wishlist]').forEach(btn => {
     btn.addEventListener('click', (e) => {
-      e.preventDefault(); e.stopPropagation();
+      e.preventDefault();
+      e.stopPropagation();
+
       const id = btn.getAttribute('data-wishlist');
-      const nowIn = customerService.toggleWishlist(id).includes(id);
-      toast(nowIn ? 'Added to wishlist' : 'Removed from wishlist');
-      // Re-render in place (no scroll jump) so every heart icon, the header
-      // badge, the mobile tab bar count and the wishlist page itself stay
-      // in sync immediately.
-      render({ resetScroll: false });
+
+      const nowIn =
+        customerService.toggleWishlist(id).includes(id);
+
+      toast(
+        nowIn
+          ? 'Added to wishlist'
+          : 'Removed from wishlist'
+      );
+
+      // Re-render in place (no scroll jump) so every heart icon,
+      // the header badge, the mobile tab bar count and the
+      // wishlist page itself stay in sync immediately.
+      render({
+        resetScroll: false
+      });
     });
   });
 }
 
-window.addEventListener('hashchange', () => render());
-window.addEventListener('DOMContentLoaded', () => render());
+// Navigate to the top whenever the hash route changes.
+window.addEventListener('hashchange', () => {
+  render();
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+  render();
+});
+
 render();
-mountHelpWidget(); // mounted once, independent of the router — persists across page navigations
+
+mountHelpWidget();
+// Mounted once, independent of the router — persists across page navigations.
