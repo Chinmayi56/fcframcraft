@@ -33,7 +33,7 @@ function toAdminUser(user: UserOut): AdminUser {
 }
 
 export async function adminLogin(email: string, password: string): Promise<{ token: string; admin: AdminUser }> {
-  const data = await apiRequest<TokenResponse>("/auth/admin/login", {
+  const data = await apiRequest<TokenResponse>("/api/auth/admin/login", {
     method: "POST",
     auth: false,
     body: { email, password },
@@ -43,7 +43,7 @@ export async function adminLogin(email: string, password: string): Promise<{ tok
 
 export async function adminLogout(): Promise<void> {
   try {
-    await apiRequest<void>("/auth/logout", { method: "POST" });
+    await apiRequest<void>("/api/auth/logout", { method: "POST" });
   } catch {
     // Logout is a client-side action regardless (JWTs are stateless) —
     // ignore network/API errors so the user can always sign out locally.
