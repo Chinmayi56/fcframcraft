@@ -228,7 +228,6 @@ export default function Dashboard() {
                 <th className="px-5 py-3 font-medium">Product</th>
                 <th className="px-5 py-3 font-medium">Qty</th>
                 <th className="px-5 py-3 font-medium">Payment</th>
-                <th className="px-5 py-3 font-medium">Amount</th>
                 <th className="px-5 py-3 font-medium">Date</th>
                 <th className="px-5 py-3 font-medium">Status</th>
               </tr>
@@ -245,9 +244,6 @@ export default function Dashboard() {
                   <td className="max-w-[220px] truncate px-5 py-3 text-farm-charcoal/75">{order.product}</td>
                   <td className="px-5 py-3 text-farm-charcoal/75">{order.quantity}</td>
                   <td className="px-5 py-3 text-farm-charcoal/75">{order.payment}</td>
-                  <td className="px-5 py-3 font-medium text-farm-charcoal-deep">
-                    ₹{order.amount.toLocaleString("en-IN")}
-                  </td>
                   <td className="px-5 py-3 text-farm-charcoal/60">
                     {new Date(order.date).toLocaleDateString("en-IN", { day: "2-digit", month: "short" })}
                   </td>
@@ -258,7 +254,7 @@ export default function Dashboard() {
               ))}
               {recentOrders.length === 0 && (
                 <tr>
-                  <td colSpan={8} className="px-5 py-10 text-center text-sm text-farm-charcoal/50">
+                  <td colSpan={7} className="px-5 py-10 text-center text-sm text-farm-charcoal/50">
                     No orders found
                   </td>
                 </tr>

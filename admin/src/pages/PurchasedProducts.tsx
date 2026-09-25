@@ -118,8 +118,6 @@ export default function PurchasedProducts() {
                   <th className="px-5 py-3 font-medium">Customer</th>
                   <th className="px-5 py-3 font-medium">Email / Mobile</th>
                   <th className="px-5 py-3 font-medium">Qty</th>
-                  <th className="px-5 py-3 font-medium">Unit Price</th>
-                  <th className="px-5 py-3 font-medium">Subtotal</th>
                   <th className="px-5 py-3 font-medium">Payment</th>
                   <th className="px-5 py-3 font-medium">Order</th>
                   <th className="px-5 py-3 font-medium">Purchase Date</th>
@@ -147,8 +145,6 @@ export default function PurchasedProducts() {
                       <td className="px-5 py-3"><p className="font-medium text-farm-charcoal-deep">{customerName}</p><p className="text-xs text-farm-charcoal/45">{order.customer_id}</p></td>
                       <td className="px-5 py-3 text-xs text-farm-charcoal/60"><div>{c.email || "—"}</div><div>{c.mobile || c.phone || "—"}</div></td>
                       <td className="px-5 py-3 font-medium">{item.quantity}</td>
-                      <td className="px-5 py-3">₹{Number(item.unit_price).toLocaleString("en-IN")}</td>
-                      <td className="px-5 py-3 font-medium">₹{Number(item.subtotal).toLocaleString("en-IN")}</td>
                       <td className="px-5 py-3"><div>{order.payment_method}</div><div className="text-xs text-farm-charcoal/50">{order.payment_status}</div></td>
                       <td className="px-5 py-3">
                         <div className="font-mono text-xs">{order.purchase_code}</div>
@@ -172,7 +168,7 @@ export default function PurchasedProducts() {
                   );
                 })}
                 {filtered.length === 0 && (
-                  <tr><td colSpan={12} className="px-5 py-14 text-center">
+                  <tr><td colSpan={10} className="px-5 py-14 text-center">
                     <ShoppingCart size={28} className="mx-auto mb-2 text-farm-charcoal/25" />
                     <p className="text-sm font-medium text-farm-charcoal/60">{orders.length === 0 ? "No purchases found." : "No purchased products match your search or filter."}</p>
                   </td></tr>

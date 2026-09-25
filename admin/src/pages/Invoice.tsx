@@ -51,11 +51,24 @@ export default function Invoice() {
         </div>
 
         <table className="mt-7 w-full text-left text-sm">
-          <thead><tr className="border-b border-black/10 text-xs uppercase tracking-wide text-farm-charcoal/45"><th className="py-2.5">Product</th><th className="py-2.5">SKU</th><th className="py-2.5 text-right">Qty</th><th className="py-2.5 text-right">Unit Price</th><th className="py-2.5 text-right">Total</th></tr></thead>
-          <tbody>{order.items.map((item) => <tr key={item.id} className="border-b border-black/5"><td className="py-3 font-medium">{item.product_name}</td><td className="py-3">{item.sku}</td><td className="py-3 text-right">{item.quantity}</td><td className="py-3 text-right">₹{Number(item.unit_price).toLocaleString("en-IN")}</td><td className="py-3 text-right font-medium">₹{Number(item.subtotal).toLocaleString("en-IN")}</td></tr>)}</tbody>
-        </table>
+  <thead>
+    <tr className="border-b border-black/10 text-xs uppercase tracking-wide text-farm-charcoal/45">
+      <th className="py-2.5">Product</th>
+      <th className="py-2.5">SKU</th>
+      <th className="py-2.5 text-right">Qty</th>
+    </tr>
+  </thead>
 
-        <div className="mt-4 flex justify-end"><div className="w-56 space-y-1.5 text-sm"><div className="flex justify-between border-t border-black/10 pt-1.5 font-display text-base font-bold"><span>Total</span><span>₹{Number(order.total_amount).toLocaleString("en-IN")}</span></div></div></div>
+  <tbody>
+    {order.items.map((item) => (
+      <tr key={item.id} className="border-b border-black/5">
+        <td className="py-3 font-medium">{item.product_name}</td>
+        <td className="py-3">{item.sku}</td>
+        <td className="py-3 text-right">{item.quantity}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
         <div className="mt-10 border-t border-black/10 pt-4 text-center text-xs text-farm-charcoal/45">This is a system-generated invoice from Farm Craft. Thank you for your business.</div>
       </div>
     </div>

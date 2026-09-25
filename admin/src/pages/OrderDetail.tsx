@@ -64,7 +64,14 @@ export default function OrderDetail() {
             <CardHeader title="Purchased Products" subtitle={`${order.items.length} product${order.items.length === 1 ? "" : "s"} in this order`} />
             <div className="overflow-x-auto">
               <table className="w-full min-w-[720px] text-left text-sm">
-                <thead><tr className="border-b border-black/5 text-xs uppercase tracking-wide text-farm-charcoal/45"><th className="px-5 py-3">Product</th><th className="px-5 py-3">SKU</th><th className="px-5 py-3">Category</th><th className="px-5 py-3">Qty</th><th className="px-5 py-3 text-right">Unit Price</th><th className="px-5 py-3 text-right">Subtotal</th></tr></thead>
+                <thead>
+  <tr className="border-b border-black/5 text-xs uppercase tracking-wide text-farm-charcoal/45">
+    <th className="px-5 py-3">Product</th>
+    <th className="px-5 py-3">SKU</th>
+    <th className="px-5 py-3">Category</th>
+    <th className="px-5 py-3">Qty</th>
+  </tr>
+</thead>
                 <tbody>{order.items.map((item) => <tr key={item.id} className="border-b border-black/5 last:border-0">
                   <td className="px-5 py-3"><div className="flex items-center gap-3">{item.image ? <img src={item.image} alt="" className="h-10 w-10 rounded-lg object-cover" /> : <div className="h-10 w-10 rounded-lg bg-farm-mist" />}<span className="font-medium">{item.product_name}</span></div></td>
                   <td className="px-5 py-3 font-mono text-xs">{item.sku}</td><td className="px-5 py-3">{item.category || "—"}</td><td className="px-5 py-3">{item.quantity}</td>
@@ -72,7 +79,6 @@ export default function OrderDetail() {
                 </tr>)}</tbody>
               </table>
             </div>
-            <div className="flex justify-end border-t border-black/5 p-5"><div className="w-64 space-y-2 text-sm"><div className="flex justify-between"><span className="text-farm-charcoal/55">Order Total</span><strong>₹{Number(order.total_amount).toLocaleString("en-IN")}</strong></div></div></div>
           </Card>
         </div>
 
